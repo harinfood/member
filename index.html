@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplikasi Kartu Member HARINFOOD</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .card-shadow {
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+        
+        .premium-card {
+            background: linear-gradient(145deg, #1e293b, #334155);
+            border: 1px solid rgba(148, 163, 184, 0.2);
+        }
+        
+        .gold-accent {
+            background: linear-gradient(90deg, #fbbf24, #f59e0b);
+        }
+        
+        .floating-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .hover-scale {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .hover-scale:hover {
+            transform: scale(1.02);
+        }
+        
+        .input-focus {
+            transition: all 0.3s ease;
+        }
+        
+        .input-focus:focus {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        @media print {
+            * {
+                visibility: hidden;
+            }
+            .print-area, .print-area * {
+                visibility: visible;
+            }
+            .print-area {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                display: flex !important;
+                justify-content: center;
+                align-items: center;
+                background: white !important;
+            }
+            .member-card {
+                width: 320px !important;
+                height: 480px !important;
+                background: linear-gradient(145deg, #ffffff, #f8fafc) !important;
+                border-radius: 20px !important;
+                box-shadow: none !important;
+                border: 3px solid #667eea !important;
+                -webkit-print-color-adjust: exact !important;
+                color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                page-break-inside: avoid !important;
+            }
+            .member-card::before {
+                background: linear-gradient(135deg, #667eea, #764ba2) !important;
+                -webkit-print-color-adjust: exact !important;
+                color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+            .barcode-container {
+                background: rgba(255, 255, 255, 0.95) !important;
+                -webkit-print-color-adjust: exact !important;
+                color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+            @page {
+                size: A4;
+                margin: 0.5in;
+            }
+        }
+        
+        .member-card {
+            width: 320px;
+            height: 480px;
+            background: linear-gradient(145deg, #ffffff, #f8fafc);
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+            border: 3px solid;
+            border-image: linear-gradient(135deg, #667eea, #764ba2, #fbbf24) 1;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1), 
+                        0 0 0 1px rgba(255, 255, 255, 0.8),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+        }
+        
+        .member-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 120px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 17px 17px 0 0;
+        }
+        
+        .member-card::after {
+            content: '';
+            position: absolute;
+            top: 100px;
+            left: 20px;
+            right: 20px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(0,0,0,0.1), transparent);
+        }
+        
+        .photo-frame {
+            width: 100px;
+            height: 120px;
+            border-radius: 15px;
+            border: 3px solid #ffffff;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15), 
+                        0 0 0 1px rgba(102, 126, 234, 0.2),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+            object-fit: cover;
+        }
+        
+        .barcode-container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 12px;
+            padding: 12px;
+            margin: 16px 0;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .premium-button {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        .premium-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+        }
+        
+        .premium-button:disabled {
+            background: #9ca3af;
+            transform: none;
+            box-shadow: none;
+        }
+        
+        .tab-button {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .tab-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .tab-button:hover::before {
+            left: 100%;
+        }
+        
+        .member-list-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .member-list-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .search-container {
+            position: relative;
+        }
+        
+        .search-container::before {
+            content: '🔍';
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 18px;
+            z-index: 10;
+        }
+        
+        .stats-card {
+            background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+    </style>
+</head>
+<body class="min-h-screen gradient-bg">
+    <!-- Floating Background Elements -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none">
+        <div class="absolute top-1/4 left-1/4 w-64 h-64 bg-white opacity-5 rounded-full floating-animation"></div>
+        <div class="absolute top-3/4 right-1/4 w-48 h-48 bg-white opacity-5 rounded-full floating-animation" style="animation-delay: -3s;"></div>
+        <div class="absolute top-1/2 left-3/4 w-32 h-32 bg-white opacity-5 rounded-full floating-animation" style="animation-delay: -1.5s;"></div>
+    </div>
+
+    <div class="container mx-auto px-4 py-8 relative z-10">
+        <!-- Header -->
+        <div class="text-center mb-12">
+            <div class="inline-block p-4 glass-effect rounded-2xl mb-6">
+                <h1 class="text-5xl font-bold text-white mb-3">
+                    <span class="bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent">✨ HARINFOOD</span>
+                    <span class="text-white">Member</span>
+                </h1>
+                <p class="text-white/80 text-lg font-medium">Sistem Kartu Member HARINFOOD</p>
+            </div>
+        </div>
+
+        <!-- Navigation Tabs -->
+        <div class="flex justify-center mb-12">
+            <div class="glass-effect rounded-2xl p-2 card-shadow">
+                <button id="tab-form" class="tab-button px-8 py-4 rounded-xl bg-white text-gray-800 font-semibold transition-all duration-300">
+                    <span class="relative z-10">🎨 Buat Member Baru</span>
+                </button>
+                <button id="tab-list" class="tab-button px-8 py-4 rounded-xl text-white font-semibold transition-all duration-300 hover:bg-white/10">
+                    <span class="relative z-10">👥 Daftar Member</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Form Section -->
+        <div id="form-section" class="max-w-7xl mx-auto">
+            <div class="grid lg:grid-cols-2 gap-12">
+                <!-- Form Input -->
+                <div class="glass-effect rounded-3xl p-8 card-shadow hover-scale">
+                    <div class="flex items-center mb-8">
+                        <div class="w-12 h-12 gold-accent rounded-xl flex items-center justify-center mr-4">
+                            <span class="text-white text-xl font-bold">📝</span>
+                        </div>
+                        <h2 class="text-3xl font-bold text-white">Data Member</h2>
+                    </div>
+                    
+                    <form id="member-form" class="space-y-6">
+                        <!-- Photo Section -->
+                        <div class="space-y-4">
+                            <label class="block text-white font-semibold text-lg">📸 Foto Member</label>
+                            <div class="grid grid-cols-2 gap-4">
+                                <button type="button" id="camera-btn" class="premium-button text-white font-semibold py-4 px-6 rounded-xl">
+                                    📷 Ambil Foto
+                                </button>
+                                <input type="file" id="photo-input" accept="image/*" 
+                                       class="file:premium-button file:border-0 file:text-white file:font-semibold file:py-4 file:px-6 file:rounded-xl file:mr-4 text-white bg-white/10 rounded-xl border border-white/20">
+                            </div>
+                            <div id="camera-switch" class="hidden">
+                                <button type="button" id="switch-camera-btn" class="w-full bg-purple-500 hover:bg-purple-600 text-white font-semibold py-3 px-6 rounded-xl transition-all">
+                                    🔄 Ganti Kamera (Depan/Belakang)
+                                </button>
+                            </div>
+                            <video id="camera-video" class="w-full h-64 bg-black/20 rounded-xl hidden" autoplay></video>
+                            <div id="camera-controls" class="grid grid-cols-2 gap-4 hidden">
+                                <button type="button" id="capture-btn" class="bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-xl transition-all">
+                                    📸 Ambil Gambar
+                                </button>
+                                <button type="button" id="cancel-camera-btn" class="bg-red-500 hover:bg-red-600 text-white font-semibold py-3 px-6 rounded-xl transition-all">
+                                    ❌ Batal
+                                </button>
+                            </div>
+                            <canvas id="capture-canvas" class="hidden"></canvas>
+                        </div>
+                        
+                        <!-- Required Fields -->
+                        <div class="space-y-6 p-6 bg-white/5 rounded-2xl border border-white/10">
+                            <h3 class="text-white font-semibold text-lg flex items-center">
+                                <span class="w-2 h-2 bg-red-400 rounded-full mr-3"></span>
+                                Data Wajib
+                            </h3>
+                            
+                            <div>
+                                <label class="block text-white font-medium mb-3">👤 Nama Lengkap</label>
+                                <input type="text" id="name-input" required
+                                       class="input-focus w-full px-4 py-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/60 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400/20"
+                                       placeholder="Masukkan nama lengkap">
+                            </div>
+                            
+                            <div>
+                                <label class="block text-white font-medium mb-3">🏠 Alamat</label>
+                                <textarea id="address-input" required rows="3"
+                                          class="input-focus w-full px-4 py-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/60 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400/20 resize-none"
+                                          placeholder="Masukkan alamat lengkap"></textarea>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-white font-medium mb-3">📞 Nomor Telepon</label>
+                                <input type="tel" id="phone-input" required
+                                       class="input-focus w-full px-4 py-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/60 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400/20"
+                                       placeholder="Contoh: 08123456789">
+                            </div>
+                        </div>
+                        
+                        <!-- Optional Fields -->
+                        <div class="space-y-6 p-6 bg-white/5 rounded-2xl border border-white/10">
+                            <h3 class="text-white font-semibold text-lg flex items-center">
+                                <span class="w-2 h-2 bg-green-400 rounded-full mr-3"></span>
+                                Data Tambahan <span class="text-white/60 text-sm ml-2">(Opsional)</span>
+                            </h3>
+                            
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-white font-medium mb-3">📧 Email</label>
+                                    <input type="email" id="email-input"
+                                           class="input-focus w-full px-4 py-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/60 focus:border-blue-400 focus:ring-2 focus:ring-blue-400/20"
+                                           placeholder="nama@email.com">
+                                </div>
+                                
+                                <div>
+                                    <label class="block text-white font-medium mb-3">🎂 Tanggal Lahir</label>
+                                    <input type="date" id="birthdate-input"
+                                           class="input-focus w-full px-4 py-4 bg-white/10 border border-white/20 rounded-xl text-white focus:border-blue-400 focus:ring-2 focus:ring-blue-400/20">
+                                </div>
+                                
+                                <div>
+                                    <label class="block text-white font-medium mb-3">👤 Jenis Kelamin</label>
+                                    <select id="gender-input"
+                                            class="input-focus w-full px-4 py-4 bg-white/10 border border-white/20 rounded-xl text-white focus:border-blue-400 focus:ring-2 focus:ring-blue-400/20">
+                                        <option value="" class="bg-gray-800">Pilih Jenis Kelamin</option>
+                                        <option value="Laki-laki" class="bg-gray-800">Laki-laki</option>
+                                        <option value="Perempuan" class="bg-gray-800">Perempuan</option>
+                                    </select>
+                                </div>
+                                
+                                <div>
+                                    <label class="block text-white font-medium mb-3">💼 Pekerjaan</label>
+                                    <input type="text" id="job-input"
+                                           class="input-focus w-full px-4 py-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/60 focus:border-blue-400 focus:ring-2 focus:ring-blue-400/20"
+                                           placeholder="Karyawan Swasta">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Member Code -->
+                        <div>
+                            <label class="block text-white font-medium mb-3">🔢 Kode Member (Otomatis)</label>
+                            <input type="text" id="member-code-input" readonly
+                                   class="w-full px-4 py-4 bg-gray-600/50 border border-gray-500/50 rounded-xl text-gray-300 cursor-not-allowed"
+                                   placeholder="Akan terisi otomatis dari nomor telepon">
+                        </div>
+                        
+                        <button type="submit" class="w-full premium-button text-white font-bold py-5 px-8 rounded-xl text-lg">
+                            ✨ Buat Kartu Member
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Preview Card -->
+                <div class="glass-effect rounded-3xl p-8 card-shadow hover-scale">
+                    <div class="flex items-center mb-8">
+                        <div class="w-12 h-12 gold-accent rounded-xl flex items-center justify-center mr-4">
+                            <span class="text-white text-xl font-bold">👁️</span>
+                        </div>
+                        <h2 class="text-3xl font-bold text-white">Preview Kartu</h2>
+                    </div>
+                    
+                    <div class="flex justify-center mb-8">
+                        <div id="card-preview" class="member-card p-6 relative">
+                            <!-- Card Header -->
+                            <div class="relative z-20 text-center pt-6 pb-4">
+                                <h2 class="text-2xl font-bold text-white tracking-wider mb-1">HARINFOOD</h2>
+                                <p class="text-white/90 text-sm font-medium tracking-wide">HARINFOOD MEMBER</p>
+                            </div>
+                            
+                            <!-- Card Content -->
+                            <div class="relative z-10 text-center px-4">
+                                <!-- Photo -->
+                                <div class="mb-6">
+                                    <img id="preview-photo" 
+                                         src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='120' viewBox='0 0 100 120'%3E%3Crect width='100' height='120' rx='15' fill='%23e5e7eb'/%3E%3Ctext x='50' y='70' text-anchor='middle' fill='%23666' font-size='24'%3E👤%3C/text%3E%3C/svg%3E" 
+                                         class="photo-frame mx-auto" alt="Foto Member">
+                                </div>
+                                
+                                <!-- Member ID -->
+                                <div class="mb-6">
+                                    <p class="text-gray-600 text-xs font-medium mb-2 tracking-wide">MEMBER ID</p>
+                                    <p id="member-id" class="text-gray-900 font-bold text-2xl tracking-wider">#001</p>
+                                </div>
+                                
+                                <!-- Member Info -->
+                                <div class="bg-gray-50 border border-gray-200 rounded-2xl p-4 shadow-inner">
+                                    <p class="text-gray-600 text-xs font-medium mb-2 tracking-wide">NAMA LENGKAP</p>
+                                    <p id="preview-name" class="text-gray-900 font-bold text-lg mb-4 tracking-wide">Nama Member</p>
+                                    
+                                    <!-- Barcode -->
+                                    <div class="barcode-container">
+                                        <svg id="barcode-svg" width="160" height="45" class="mx-auto">
+                                            <!-- Barcode will be generated here -->
+                                        </svg>
+                                        <p id="preview-phone" class="text-gray-800 text-xs font-mono mt-2 tracking-wider">1234567890</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center">
+                        <button id="print-card" class="premium-button text-white font-bold py-4 px-8 rounded-xl disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+                            🖨️ Cetak Kartu
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Member List Section -->
+        <div id="list-section" class="max-w-7xl mx-auto hidden">
+            <div class="glass-effect rounded-3xl p-8 card-shadow">
+                <!-- Header -->
+                <div class="flex flex-col md:flex-row justify-between items-center mb-8">
+                    <div class="flex items-center mb-4 md:mb-0">
+                        <div class="w-12 h-12 gold-accent rounded-xl flex items-center justify-center mr-4">
+                            <span class="text-white text-xl font-bold">👥</span>
+                        </div>
+                        <h2 class="text-3xl font-bold text-white">Daftar Member</h2>
+                    </div>
+                    <div class="stats-card px-6 py-3 rounded-xl">
+                        <span class="text-white/80 text-sm">Total Member: </span>
+                        <span id="total-members" class="text-white font-bold text-lg">0</span>
+                    </div>
+                </div>
+                
+                <!-- Search Bar -->
+                <div class="search-container mb-8">
+                    <input type="text" id="search-input" 
+                           class="w-full pl-14 pr-6 py-5 bg-white/10 border border-white/20 rounded-2xl text-white placeholder-white/60 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400/20 text-lg"
+                           placeholder="Cari member berdasarkan nama, ID, atau nomor telepon...">
+                </div>
+                
+                <!-- Members Grid -->
+                <div id="members-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Member cards will be inserted here -->
+                </div>
+                
+                <!-- Empty State -->
+                <div id="empty-state" class="text-center py-16">
+                    <div class="text-8xl mb-6">📋</div>
+                    <h3 class="text-2xl font-bold text-white mb-4">Belum ada member</h3>
+                    <p class="text-white/70 text-lg">Buat member pertama Anda dengan mengklik tab "Buat Member Baru"</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Print Area (Hidden) -->
+        <div class="print-area hidden">
+            <div id="print-content" class="flex justify-center items-center min-h-screen">
+                <!-- Card to be printed will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Global variables
+        let members = JSON.parse(localStorage.getItem('members')) || [];
+        let currentMemberId = 1;
+        let currentPhotoData = null;
+        let cameraStream = null;
+        let currentFacingMode = 'user'; // 'user' for front camera, 'environment' for back camera
+
+        // DOM elements
+        const tabForm = document.getElementById('tab-form');
+        const tabList = document.getElementById('tab-list');
+        const formSection = document.getElementById('form-section');
+        const listSection = document.getElementById('list-section');
+        const memberForm = document.getElementById('member-form');
+        const photoInput = document.getElementById('photo-input');
+        const cameraBtn = document.getElementById('camera-btn');
+        const cameraVideo = document.getElementById('camera-video');
+        const cameraControls = document.getElementById('camera-controls');
+        const captureBtn = document.getElementById('capture-btn');
+        const cancelCameraBtn = document.getElementById('cancel-camera-btn');
+        const captureCanvas = document.getElementById('capture-canvas');
+        const switchCameraBtn = document.getElementById('switch-camera-btn');
+        const cameraSwitch = document.getElementById('camera-switch');
+        const nameInput = document.getElementById('name-input');
+        const addressInput = document.getElementById('address-input');
+        const phoneInput = document.getElementById('phone-input');
+        const emailInput = document.getElementById('email-input');
+        const birthdateInput = document.getElementById('birthdate-input');
+        const genderInput = document.getElementById('gender-input');
+        const jobInput = document.getElementById('job-input');
+        const memberCodeInput = document.getElementById('member-code-input');
+        const previewPhoto = document.getElementById('preview-photo');
+        const previewName = document.getElementById('preview-name');
+        const previewPhone = document.getElementById('preview-phone');
+        const barcodesvg = document.getElementById('barcode-svg');
+        const memberId = document.getElementById('member-id');
+        const printCard = document.getElementById('print-card');
+        const membersGrid = document.getElementById('members-grid');
+        const totalMembers = document.getElementById('total-members');
+        const emptyState = document.getElementById('empty-state');
+        const printContent = document.getElementById('print-content');
+        const searchInput = document.getElementById('search-input');
+
+        // Initialize
+        updateMembersList();
+        updateMemberId();
+        generateBarcode('1234567890');
+
+        // Search functionality
+        searchInput.addEventListener('input', function() {
+            updateMembersList();
+        });
+
+        // Tab switching
+        tabForm.addEventListener('click', () => {
+            switchTab('form');
+        });
+
+        tabList.addEventListener('click', () => {
+            switchTab('list');
+        });
+
+        function switchTab(tab) {
+            if (tab === 'form') {
+                tabForm.className = 'tab-button px-8 py-4 rounded-xl bg-white text-gray-800 font-semibold transition-all duration-300';
+                tabList.className = 'tab-button px-8 py-4 rounded-xl text-white font-semibold transition-all duration-300 hover:bg-white/10';
+                formSection.classList.remove('hidden');
+                listSection.classList.add('hidden');
+            } else {
+                tabList.className = 'tab-button px-8 py-4 rounded-xl bg-white text-gray-800 font-semibold transition-all duration-300';
+                tabForm.className = 'tab-button px-8 py-4 rounded-xl text-white font-semibold transition-all duration-300 hover:bg-white/10';
+                listSection.classList.remove('hidden');
+                formSection.classList.add('hidden');
+                updateMembersList();
+            }
+        }
+
+        // Camera functionality
+        cameraBtn.addEventListener('click', async function() {
+            await startCamera();
+        });
+
+        switchCameraBtn.addEventListener('click', async function() {
+            currentFacingMode = currentFacingMode === 'user' ? 'environment' : 'user';
+            await startCamera();
+        });
+
+        async function startCamera() {
+            try {
+                // Stop existing stream if any
+                if (cameraStream) {
+                    cameraStream.getTracks().forEach(track => track.stop());
+                }
+
+                cameraStream = await navigator.mediaDevices.getUserMedia({ 
+                    video: { 
+                        facingMode: currentFacingMode,
+                        width: { ideal: 1280 },
+                        height: { ideal: 720 }
+                    } 
+                });
+                
+                cameraVideo.srcObject = cameraStream;
+                cameraVideo.classList.remove('hidden');
+                cameraControls.classList.remove('hidden');
+                cameraSwitch.classList.remove('hidden');
+                cameraBtn.style.display = 'none';
+                photoInput.style.display = 'none';
+                
+                // Update button text based on current camera
+                switchCameraBtn.innerHTML = currentFacingMode === 'user' ? 
+                    '🔄 Ganti ke Kamera Belakang' : 
+                    '🔄 Ganti ke Kamera Depan';
+                    
+            } catch (err) {
+                alert('Tidak dapat mengakses kamera. Pastikan browser mendukung kamera dan izin telah diberikan.');
+                console.error('Camera error:', err);
+            }
+        }
+
+        captureBtn.addEventListener('click', function() {
+            const canvas = captureCanvas;
+            const context = canvas.getContext('2d');
+            canvas.width = cameraVideo.videoWidth;
+            canvas.height = cameraVideo.videoHeight;
+            
+            context.drawImage(cameraVideo, 0, 0);
+            currentPhotoData = canvas.toDataURL('image/jpeg', 0.8);
+            previewPhoto.src = currentPhotoData;
+            
+            stopCamera();
+            updatePrintButton();
+        });
+
+        cancelCameraBtn.addEventListener('click', function() {
+            stopCamera();
+        });
+
+        function stopCamera() {
+            if (cameraStream) {
+                cameraStream.getTracks().forEach(track => track.stop());
+                cameraStream = null;
+            }
+            cameraVideo.classList.add('hidden');
+            cameraControls.classList.add('hidden');
+            cameraSwitch.classList.add('hidden');
+            cameraBtn.style.display = 'block';
+            photoInput.style.display = 'block';
+            currentFacingMode = 'user'; // Reset to front camera
+        }
+
+        // Photo upload handling
+        photoInput.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    currentPhotoData = e.target.result;
+                    previewPhoto.src = currentPhotoData;
+                    updatePrintButton();
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Form input handling
+        nameInput.addEventListener('input', function() {
+            previewName.textContent = this.value || 'Nama Member';
+            updatePrintButton();
+        });
+
+        phoneInput.addEventListener('input', function() {
+            const phoneNumber = this.value || '';
+            memberCodeInput.value = phoneNumber;
+            previewPhone.textContent = phoneNumber || '1234567890';
+            generateBarcode(phoneNumber || '1234567890');
+            updatePrintButton();
+        });
+
+        // Barcode generation function
+        function generateBarcode(code) {
+            const svg = barcodesvg;
+            svg.innerHTML = '';
+            
+            if (!code || code.length === 0) {
+                code = '1234567890';
+            }
+            
+            const barWidth = 2;
+            const barHeight = 40;
+            let x = 10;
+            
+            // Start pattern
+            for (let i = 0; i < 3; i++) {
+                const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+                rect.setAttribute('x', x);
+                rect.setAttribute('y', 2);
+                rect.setAttribute('width', barWidth);
+                rect.setAttribute('height', barHeight);
+                rect.setAttribute('fill', '#000000');
+                svg.appendChild(rect);
+                x += barWidth * 2;
+            }
+            
+            // Data bars
+            for (let i = 0; i < code.length && i < 10; i++) {
+                const digit = parseInt(code[i]) || 0;
+                const patterns = [
+                    [1,1,0,0,1,0], [1,0,1,0,0,1], [1,0,0,1,0,1], [0,1,1,0,1,0], [0,1,0,1,1,0],
+                    [0,0,1,1,1,0], [1,1,1,0,0,0], [1,0,1,1,0,0], [0,1,1,1,0,0], [1,1,0,1,0,0]
+                ];
+                
+                const pattern = patterns[digit];
+                
+                for (let j = 0; j < pattern.length; j++) {
+                    if (pattern[j] === 1) {
+                        const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+                        rect.setAttribute('x', x);
+                        rect.setAttribute('y', 2);
+                        rect.setAttribute('width', barWidth);
+                        rect.setAttribute('height', barHeight);
+                        rect.setAttribute('fill', '#000000');
+                        svg.appendChild(rect);
+                    }
+                    x += barWidth;
+                }
+                x += barWidth * 0.5;
+            }
+            
+            // End pattern
+            for (let i = 0; i < 3; i++) {
+                const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+                rect.setAttribute('x', x);
+                rect.setAttribute('y', 2);
+                rect.setAttribute('width', barWidth);
+                rect.setAttribute('height', barHeight);
+                rect.setAttribute('fill', '#000000');
+                svg.appendChild(rect);
+                x += barWidth * 2;
+            }
+        }
+
+        // Form submission
+        memberForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const member = {
+                id: currentMemberId,
+                name: nameInput.value,
+                address: addressInput.value,
+                phone: phoneInput.value,
+                email: emailInput.value || '',
+                birthdate: birthdateInput.value || '',
+                gender: genderInput.value || '',
+                job: jobInput.value || '',
+                memberCode: phoneInput.value,
+                photo: currentPhotoData,
+                createdAt: new Date().toLocaleDateString('id-ID')
+            };
+
+            members.push(member);
+            localStorage.setItem('members', JSON.stringify(members));
+            
+            // Reset form
+            memberForm.reset();
+            currentPhotoData = null;
+            previewPhoto.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='120' viewBox='0 0 100 120'%3E%3Crect width='100' height='120' rx='15' fill='%23e5e7eb'/%3E%3Ctext x='50' y='70' text-anchor='middle' fill='%23666' font-size='24'%3E👤%3C/text%3E%3C/svg%3E";
+            previewName.textContent = 'Nama Member';
+            previewPhone.textContent = '1234567890';
+            generateBarcode('1234567890');
+            
+            currentMemberId++;
+            updateMemberId();
+            updatePrintButton();
+            
+            // Success notification
+            const notification = document.createElement('div');
+            notification.className = 'fixed top-4 right-4 bg-green-500 text-white px-6 py-4 rounded-xl shadow-lg z-50 transform translate-x-full transition-transform duration-300';
+            notification.innerHTML = '✅ Member berhasil ditambahkan!';
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.transform = 'translateX(0)';
+            }, 100);
+            
+            setTimeout(() => {
+                notification.style.transform = 'translateX(full)';
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 300);
+            }, 3000);
+        });
+
+        // Print functionality
+        printCard.addEventListener('click', function() {
+            const cardClone = document.getElementById('card-preview').cloneNode(true);
+            cardClone.classList.add('mx-auto');
+            printContent.innerHTML = '';
+            printContent.appendChild(cardClone);
+            
+            // Show print area
+            const printArea = document.querySelector('.print-area');
+            printArea.classList.remove('hidden');
+            printArea.style.display = 'flex';
+            
+            // Force browser to recognize the changes
+            setTimeout(() => {
+                // Trigger print dialog
+                if (window.print) {
+                    window.print();
+                } else {
+                    // Fallback for browsers that don't support window.print
+                    alert('Silakan gunakan Ctrl+P atau Cmd+P untuk mencetak');
+                }
+                
+                // Hide print area after printing
+                setTimeout(() => {
+                    printArea.classList.add('hidden');
+                    printArea.style.display = 'none';
+                }, 2000);
+            }, 500);
+        });
+
+        // Helper functions
+        function updateMemberId() {
+            if (members.length > 0) {
+                currentMemberId = Math.max(...members.map(m => m.id)) + 1;
+            }
+            memberId.textContent = `#${String(currentMemberId).padStart(3, '0')}`;
+        }
+
+        function updatePrintButton() {
+            const hasRequiredData = nameInput.value && addressInput.value && phoneInput.value;
+            printCard.disabled = !hasRequiredData;
+        }
+
+        function updateMembersList() {
+            const searchTerm = searchInput ? searchInput.value.toLowerCase() : '';
+            const filteredMembers = members.filter(member => 
+                member.name.toLowerCase().includes(searchTerm) ||
+                member.phone.includes(searchTerm) ||
+                (member.email && member.email.toLowerCase().includes(searchTerm)) ||
+                (member.memberCode && member.memberCode.includes(searchTerm)) ||
+                String(member.id).padStart(3, '0').includes(searchTerm)
+            );
+            
+            totalMembers.textContent = filteredMembers.length;
+            
+            if (filteredMembers.length === 0) {
+                membersGrid.classList.add('hidden');
+                emptyState.classList.remove('hidden');
+                if (searchTerm) {
+                    emptyState.innerHTML = `
+                        <div class="text-8xl mb-6">🔍</div>
+                        <h3 class="text-2xl font-bold text-white mb-4">Tidak ada hasil</h3>
+                        <p class="text-white/70 text-lg">Tidak ditemukan member dengan kata kunci "${searchTerm}"</p>
+                    `;
+                } else {
+                    emptyState.innerHTML = `
+                        <div class="text-8xl mb-6">📋</div>
+                        <h3 class="text-2xl font-bold text-white mb-4">Belum ada member</h3>
+                        <p class="text-white/70 text-lg">Buat member pertama Anda dengan mengklik tab "Buat Member Baru"</p>
+                    `;
+                }
+                return;
+            }
+            
+            membersGrid.classList.remove('hidden');
+            emptyState.classList.add('hidden');
+            
+            membersGrid.innerHTML = filteredMembers.map(member => `
+                <div class="member-list-card rounded-2xl p-6 card-shadow">
+                    <div class="flex items-center space-x-4 mb-6">
+                        <img src="${member.photo || "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Ccircle cx='30' cy='30' r='30' fill='%23e5e7eb'/%3E%3Ctext x='30' y='36' text-anchor='middle' fill='%23666' font-size='24'%3E👤%3C/text%3E%3C/svg%3E"}" 
+                             class="w-16 h-16 rounded-full object-cover border-3 border-gray-200 shadow-lg" alt="Foto ${member.name}">
+                        <div>
+                            <h3 class="font-bold text-gray-800 text-lg">${member.name}</h3>
+                            <p class="text-gray-600 font-medium">ID: #${String(member.id).padStart(3, '0')}</p>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-3 text-sm text-gray-600 mb-6">
+                        <p class="flex items-center"><span class="font-semibold mr-2">🏠</span> ${member.address}</p>
+                        <p class="flex items-center"><span class="font-semibold mr-2">📞</span> ${member.phone}</p>
+                        ${member.email ? `<p class="flex items-center"><span class="font-semibold mr-2">📧</span> ${member.email}</p>` : ''}
+                        ${member.gender && member.job ? `<p class="flex items-center"><span class="font-semibold mr-2">👤</span> ${member.gender} • ${member.job}</p>` : ''}
+                        <p class="flex items-center"><span class="font-semibold mr-2">📊</span> ${member.memberCode}</p>
+                        <p class="flex items-center"><span class="font-semibold mr-2">📅</span> ${member.createdAt}</p>
+                    </div>
+                    
+                    <div class="flex space-x-3">
+                        <button onclick="printMemberCard(${member.id})" 
+                                class="flex-1 bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 px-4 rounded-xl transition-all hover:shadow-lg">
+                            🖨️ Cetak
+                        </button>
+                        <button onclick="deleteMember(${member.id})" 
+                                class="bg-red-500 hover:bg-red-600 text-white font-semibold py-3 px-4 rounded-xl transition-all hover:shadow-lg">
+                            🗑️
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function printMemberCard(memberId) {
+            const member = members.find(m => m.id === memberId);
+            if (!member) return;
+            
+            // Generate barcode for print
+            const tempSvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+            tempSvg.setAttribute('width', '160');
+            tempSvg.setAttribute('height', '45');
+            
+            const barWidth = 2;
+            const barHeight = 40;
+            let x = 10;
+            
+            // Generate barcode pattern
+            for (let i = 0; i < 3; i++) {
+                const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+                rect.setAttribute('x', x);
+                rect.setAttribute('y', 2);
+                rect.setAttribute('width', barWidth);
+                rect.setAttribute('height', barHeight);
+                rect.setAttribute('fill', 'black');
+                tempSvg.appendChild(rect);
+                x += barWidth * 2;
+            }
+            
+            for (let i = 0; i < member.memberCode.length && i < 10; i++) {
+                const digit = parseInt(member.memberCode[i]) || 0;
+                const patterns = [
+                    [1,1,0,0,1,0], [1,0,1,0,0,1], [1,0,0,1,0,1], [0,1,1,0,1,0], [0,1,0,1,1,0],
+                    [0,0,1,1,1,0], [1,1,1,0,0,0], [1,0,1,1,0,0], [0,1,1,1,0,0], [1,1,0,1,0,0]
+                ];
+                const pattern = patterns[digit];
+                
+                for (let j = 0; j < pattern.length; j++) {
+                    if (pattern[j] === 1) {
+                        const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+                        rect.setAttribute('x', x);
+                        rect.setAttribute('y', 2);
+                        rect.setAttribute('width', barWidth);
+                        rect.setAttribute('height', barHeight);
+                        rect.setAttribute('fill', 'black');
+                        tempSvg.appendChild(rect);
+                    }
+                    x += barWidth;
+                }
+                x += barWidth * 0.5;
+            }
+            
+            for (let i = 0; i < 3; i++) {
+                const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+                rect.setAttribute('x', x);
+                rect.setAttribute('y', 2);
+                rect.setAttribute('width', barWidth);
+                rect.setAttribute('height', barHeight);
+                rect.setAttribute('fill', 'black');
+                tempSvg.appendChild(rect);
+                x += barWidth * 2;
+            }
+
+            const cardHtml = `
+                <div class="member-card p-6 relative mx-auto">
+                    <div class="relative z-20 text-center pt-6 pb-4">
+                        <h2 class="text-2xl font-bold text-white tracking-wider mb-1">HARINFOOD</h2>
+                        <p class="text-white/90 text-sm font-medium tracking-wide">HARINFOOD MEMBER</p>
+                    </div>
+                    
+                    <div class="relative z-10 text-center px-4">
+                        <div class="mb-6">
+                            <img src="${member.photo || "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='120' viewBox='0 0 100 120'%3E%3Crect width='100' height='120' rx='15' fill='%23e5e7eb'/%3E%3Ctext x='50' y='70' text-anchor='middle' fill='%23666' font-size='24'%3E👤%3C/text%3E%3C/svg%3E"}" 
+                                 class="photo-frame mx-auto" alt="Foto ${member.name}">
+                        </div>
+                        
+                        <div class="mb-6">
+                            <p class="text-gray-600 text-xs font-medium mb-2 tracking-wide">MEMBER ID</p>
+                            <p class="text-gray-900 font-bold text-2xl tracking-wider">#${String(member.id).padStart(3, '0')}</p>
+                        </div>
+                        
+                        <div class="bg-gray-50 border border-gray-200 rounded-2xl p-4 shadow-inner">
+                            <p class="text-gray-600 text-xs font-medium mb-2 tracking-wide">NAMA LENGKAP</p>
+                            <p class="text-gray-900 font-bold text-lg mb-4 tracking-wide">${member.name}</p>
+                            
+                            <div class="barcode-container">
+                                ${tempSvg.outerHTML}
+                                <p class="text-gray-800 text-xs font-mono mt-2 tracking-wider">${member.memberCode}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            printContent.innerHTML = cardHtml;
+            
+            // Show print area
+            const printArea = document.querySelector('.print-area');
+            printArea.classList.remove('hidden');
+            printArea.style.display = 'flex';
+            
+            // Force browser to recognize the changes
+            setTimeout(() => {
+                // Trigger print dialog
+                if (window.print) {
+                    window.print();
+                } else {
+                    // Fallback for browsers that don't support window.print
+                    alert('Silakan gunakan Ctrl+P atau Cmd+P untuk mencetak');
+                }
+                
+                // Hide print area after printing
+                setTimeout(() => {
+                    printArea.classList.add('hidden');
+                    printArea.style.display = 'none';
+                }, 2000);
+            }, 500);
+        }
+
+        function deleteMember(memberId) {
+            if (confirm('Apakah Anda yakin ingin menghapus member ini?')) {
+                members = members.filter(m => m.id !== memberId);
+                localStorage.setItem('members', JSON.stringify(members));
+                updateMembersList();
+                
+                // Success notification
+                const notification = document.createElement('div');
+                notification.className = 'fixed top-4 right-4 bg-red-500 text-white px-6 py-4 rounded-xl shadow-lg z-50 transform translate-x-full transition-transform duration-300';
+                notification.innerHTML = '✅ Member berhasil dihapus!';
+                document.body.appendChild(notification);
+                
+                setTimeout(() => {
+                    notification.style.transform = 'translateX(0)';
+                }, 100);
+                
+                setTimeout(() => {
+                    notification.style.transform = 'translateX(full)';
+                    setTimeout(() => {
+                        document.body.removeChild(notification);
+                    }, 300);
+                }, 3000);
+            }
+        }
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'974c5384b0045d17',t:'MTc1NjEzNzg3Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
