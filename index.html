@@ -3,1038 +3,1536 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aplikasi Kartu Member HARINFOOD</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>HARINFOOD - Sistem Kartu Member</title>
+    <meta name="description" content="Sistem Manajemen Kartu Member HARINFOOD - Daftar, kelola, dan cetak kartu member dengan mudah">
+    <meta name="theme-color" content="#2c3e50">
+    <link rel="manifest" href="data:application/json;base64,ewogICJuYW1lIjogIk1FTUJFUiBDQVJEIiwKICAic2hvcnRfbmFtZSI6ICJNRU1CRVIgQ0FSRCIsCiAgImRlc2NyaXB0aW9uIjogIlNpc3RlbSBNYW5hamVtZW4gS2FydHUgTWVtYmVyIEhBUklORk9PRCIsCiAgInN0YXJ0X3VybCI6ICIuIiwKICAiZGlzcGxheSI6ICJzdGFuZGFsb25lIiwKICAiYmFja2dyb3VuZF9jb2xvciI6ICIjMmMzZTUwIiwKICAidGhlbWVfY29sb3IiOiAiIzJjM2U1MCIsCiAgIm9yaWVudGF0aW9uIjogInBvcnRyYWl0IiwKICAiaWNvbnMiOiBbCiAgICB7CiAgICAgICJzcmMiOiAiaHR0cHM6Ly9naXRodWIuY29tL2hhcmluZm9vZC9zY2FuL2Jsb2IvbWFpbi9pY29uLTUxMi5wbmc/cmF3PXRydWUiLAogICAgICAic2l6ZXMiOiAiNTEyeDUxMiIsCiAgICAgICJ0eXBlIjogImltYWdlL3BuZyIsCiAgICAgICJwdXJwb3NlIjogImFueSBtYXNrYWJsZSIKICAgIH0sCiAgICB7CiAgICAgICJzcmMiOiAiaHR0cHM6Ly9naXRodWIuY29tL2hhcmluZm9vZC9zY2FuL2Jsb2IvbWFpbi9pY29uLTUxMi5wbmc/cmF3PXRydWUiLAogICAgICAic2l6ZXMiOiAiMjU2eDI1NiIsCiAgICAgICJ0eXBlIjogImltYWdlL3BuZyIsCiAgICAgICJwdXJwb3NlIjogImFueSIKICAgIH0sCiAgICB7CiAgICAgICJzcmMiOiAiaHR0cHM6Ly9naXRodWIuY29tL2hhcmluZm9vZC9zY2FuL2Jsb2IvbWFpbi9pY29uLTUxMi5wbmc/cmF3PXRydWUiLAogICAgICAic2l6ZXMiOiAiMTkyeDE5MiIsCiAgICAgICJ0eXBlIjogImltYWdlL3BuZyIsCiAgICAgICJwdXJwb3NlIjogImFueSIKICAgIH0sCiAgICB7CiAgICAgICJzcmMiOiAiaHR0cHM6Ly9naXRodWIuY29tL2hhcmluZm9vZC9zY2FuL2Jsb2IvbWFpbi9pY29uLTUxMi5wbmc/cmF3PXRydWUiLAogICAgICAic2l6ZXMiOiAiMTQ0eDE0NCIsCiAgICAgICJ0eXBlIjogImltYWdlL3BuZyIsCiAgICAgICJwdXJwb3NlIjogImFueSIKICAgIH0sCiAgICB7CiAgICAgICJzcmMiOiAiaHR0cHM6Ly9naXRodWIuY29tL2hhcmluZm9vZC9zY2FuL2Jsb2IvbWFpbi9pY29uLTUxMi5wbmc/cmF3PXRydWUiLAogICAgICAic2l6ZXMiOiAiOTZ4OTYiLAogICAgICAidHlwZSI6ICJpbWFnZS9wbmciLAogICAgICAicHVycG9zZSI6ICJhbnkiCiAgICB9LAogICAgewogICAgICAic3JjIjogImh0dHBzOi8vZ2l0aHViLmNvbS9oYXJpbmZvb2Qvc2Nhbi9ibG9iL21haW4vaWNvbi01MTIucG5nP3Jhdz10cnVlIiwKICAgICAgInNpemVzIjogIjcyeDcyIiwKICAgICAgInR5cGUiOiAiaW1hZ2UvcG5nIiwKICAgICAgInB1cnBvc2UiOiAiYW55IgogICAgfSwKICAgIHsKICAgICAgInNyYyI6ICJodHRwczovL2dpdGh1Yi5jb20vaGFyaW5mb29kL3NjYW4vYmxvYi9tYWluL2ljb24tNTEyLnBuZz9yYXc9dHJ1ZSIsCiAgICAgICJzaXplcyI6ICI0OHg0OCIsCiAgICAgICJ0eXBlIjogImltYWdlL3BuZyIsCiAgICAgICJwdXJwb3NlIjogImFueSIKICAgIH0KICA1LAogICJjYXRlZ29yaWVzIjogWyJidXNpbmVzcyIsICJwcm9kdWN0aXZpdHkiXSwKICAibGFuZyI6ICJpZCIKfQ==">
+    <link rel="apple-touch-icon" href="https://github.com/harinfood/scan/blob/main/icon-512.png?raw=true">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.5/dist/JsBarcode.all.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
-        
-        * {
-            font-family: 'Inter', sans-serif;
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --success-color: #27ae60;
+            --warning-color: #f39c12;
+            --light-bg: #ecf0f1;
+            --dark-text: #2c3e50;
         }
-        
-        .gradient-bg {
+
+        body {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        
-        .glass-effect {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-        
-        .card-shadow {
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-        }
-        
-        .premium-card {
-            background: linear-gradient(145deg, #1e293b, #334155);
-            border: 1px solid rgba(148, 163, 184, 0.2);
-        }
-        
-        .gold-accent {
-            background: linear-gradient(90deg, #fbbf24, #f59e0b);
-        }
-        
-        .floating-animation {
-            animation: float 6s ease-in-out infinite;
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
-        
-        .hover-scale {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        .hover-scale:hover {
-            transform: scale(1.02);
-        }
-        
-        .input-focus {
-            transition: all 0.3s ease;
-        }
-        
-        .input-focus:focus {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-        }
-        
-        @media print {
-            * {
-                visibility: hidden;
-            }
-            .print-area, .print-area * {
-                visibility: visible;
-            }
-            .print-area {
-                position: absolute;
-                left: 0;
-                top: 0;
-                width: 100%;
-                height: 100%;
-                display: flex !important;
-                justify-content: center;
-                align-items: center;
-                background: white !important;
-            }
-            .member-card {
-                width: 320px !important;
-                height: 480px !important;
-                background: linear-gradient(145deg, #ffffff, #f8fafc) !important;
-                border-radius: 20px !important;
-                box-shadow: none !important;
-                border: 3px solid #667eea !important;
-                -webkit-print-color-adjust: exact !important;
-                color-adjust: exact !important;
-                print-color-adjust: exact !important;
-                page-break-inside: avoid !important;
-            }
-            .member-card::before {
-                background: linear-gradient(135deg, #667eea, #764ba2) !important;
-                -webkit-print-color-adjust: exact !important;
-                color-adjust: exact !important;
-                print-color-adjust: exact !important;
-            }
-            .barcode-container {
-                background: rgba(255, 255, 255, 0.95) !important;
-                -webkit-print-color-adjust: exact !important;
-                color-adjust: exact !important;
-                print-color-adjust: exact !important;
-            }
-            @page {
-                size: A4;
-                margin: 0.5in;
-            }
-        }
-        
-        .member-card {
-            width: 320px;
-            height: 480px;
-            background: linear-gradient(145deg, #ffffff, #f8fafc);
-            border-radius: 20px;
-            position: relative;
-            overflow: hidden;
-            border: 3px solid;
-            border-image: linear-gradient(135deg, #667eea, #764ba2, #fbbf24) 1;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1), 
-                        0 0 0 1px rgba(255, 255, 255, 0.8),
-                        inset 0 1px 0 rgba(255, 255, 255, 0.9);
-        }
-        
-        .member-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 120px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            border-radius: 17px 17px 0 0;
-        }
-        
-        .member-card::after {
-            content: '';
-            position: absolute;
-            top: 100px;
-            left: 20px;
-            right: 20px;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, rgba(0,0,0,0.1), transparent);
-        }
-        
-        .photo-frame {
-            width: 100px;
-            height: 120px;
-            border-radius: 15px;
-            border: 3px solid #ffffff;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15), 
-                        0 0 0 1px rgba(102, 126, 234, 0.2),
-                        inset 0 1px 0 rgba(255, 255, 255, 0.8);
-            object-fit: cover;
-        }
-        
-        .barcode-container {
+
+        .main-container {
             background: rgba(255, 255, 255, 0.95);
-            border-radius: 12px;
-            padding: 12px;
-            margin: 16px 0;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            margin: 20px auto;
+            max-width: 1200px;
         }
-        
-        .premium-button {
-            background: linear-gradient(135deg, #667eea, #764ba2);
+
+        .header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 30px;
+            border-radius: 20px 20px 0 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .install-prompt {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 25px;
+            padding: 8px 16px;
+            color: white;
+            font-size: 14px;
+            cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+            display: none;
         }
-        
-        .premium-button:hover {
+
+        .install-prompt:hover {
+            background: rgba(255, 255, 255, 0.3);
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
         }
-        
-        .premium-button:disabled {
-            background: #9ca3af;
-            transform: none;
-            box-shadow: none;
+
+        .install-prompt.show {
+            display: block;
+            animation: slideInRight 0.5s ease-out;
         }
-        
-        .tab-button {
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .nav-tabs {
+            border: none;
+            background: var(--light-bg);
+            padding: 20px 20px 0 20px;
+        }
+
+        .nav-tabs .nav-link {
+            border: none;
+            background: transparent;
+            color: var(--dark-text);
+            font-weight: 600;
+            padding: 15px 25px;
+            margin-right: 10px;
+            border-radius: 15px 15px 0 0;
+            transition: all 0.3s ease;
+        }
+
+        .nav-tabs .nav-link:hover {
+            background: rgba(52, 152, 219, 0.1);
+            color: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        .nav-tabs .nav-link.active {
+            background: white;
+            color: var(--primary-color);
+            box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .tab-content {
+            background: white;
+            padding: 30px;
+            border-radius: 0 0 20px 20px;
+        }
+
+        .form-control, .form-select {
+            border: 2px solid #e9ecef;
+            border-radius: 12px;
+            padding: 12px 15px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus, .form-select:focus {
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 0 0.2rem rgba(52, 152, 219, 0.25);
+            transform: translateY(-1px);
+        }
+
+        .btn-custom {
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            border: none;
             position: relative;
             overflow: hidden;
         }
-        
-        .tab-button::before {
+
+        .btn-custom::before {
             content: '';
             position: absolute;
             top: 0;
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
             transition: left 0.5s;
         }
-        
-        .tab-button:hover::before {
+
+        .btn-custom:hover::before {
             left: 100%;
         }
-        
-        .member-list-card {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+
+        .btn-primary-custom {
+            background: linear-gradient(135deg, var(--secondary-color), #5dade2);
+            color: white;
+        }
+
+        .btn-primary-custom:hover {
+            background: linear-gradient(135deg, #2980b9, var(--secondary-color));
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(52, 152, 219, 0.3);
+        }
+
+        .btn-success-custom {
+            background: linear-gradient(135deg, var(--success-color), #58d68d);
+            color: white;
+        }
+
+        .btn-success-custom:hover {
+            background: linear-gradient(135deg, #229954, var(--success-color));
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(39, 174, 96, 0.3);
+        }
+
+        .btn-warning-custom {
+            background: linear-gradient(135deg, var(--warning-color), #f7dc6f);
+            color: white;
+        }
+
+        .btn-warning-custom:hover {
+            background: linear-gradient(135deg, #d68910, var(--warning-color));
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(243, 156, 18, 0.3);
+        }
+
+        .btn-danger-custom {
+            background: linear-gradient(135deg, var(--accent-color), #ec7063);
+            color: white;
+        }
+
+        .btn-danger-custom:hover {
+            background: linear-gradient(135deg, #c0392b, var(--accent-color));
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(231, 76, 60, 0.3);
+        }
+
+        .camera-container {
+            position: relative;
+            background: #f8f9fa;
+            border: 2px dashed #dee2e6;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
             transition: all 0.3s ease;
         }
-        
-        .member-list-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+
+        .camera-container:hover {
+            border-color: var(--secondary-color);
+            background: rgba(52, 152, 219, 0.05);
         }
-        
-        .search-container {
+
+        #video {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        #canvas {
+            display: none;
+        }
+
+        .photo-preview {
+            max-width: 200px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            margin: 10px auto;
+        }
+
+        .member-card {
+            width: 300px;
+            height: 450px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            margin: 20px auto;
+            padding: 30px 20px;
             position: relative;
+            overflow: hidden;
+            border: 1px solid #e0e0e0;
         }
-        
-        .search-container::before {
-            content: '🔍';
-            position: absolute;
-            left: 16px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 18px;
-            z-index: 10;
+
+        .member-card-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #f0f0f0;
         }
-        
-        .stats-card {
-            background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255,255,255,0.2);
+
+        .member-card-header h3 {
+            color: #000;
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin: 0;
+            letter-spacing: 2px;
+        }
+
+        .member-card-header small {
+            color: #666;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .member-card-body {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .member-photo {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #ddd;
+            margin-bottom: 20px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .member-info h4 {
+            color: #000;
+            font-size: 1.6rem;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .member-info p {
+            color: #333;
+            font-size: 1rem;
+            margin: 5px 0;
+        }
+
+        .barcode-container {
+            text-align: center;
+            margin-top: auto;
+            padding-top: 20px;
+            border-top: 2px solid #f0f0f0;
+        }
+
+        .alert-custom {
+            border-radius: 15px;
+            border: none;
+            padding: 15px 20px;
+            margin: 20px 0;
+            font-weight: 500;
+        }
+
+        .table-custom {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .table-custom thead {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+        }
+
+        .table-custom tbody tr:hover {
+            background: rgba(52, 152, 219, 0.05);
+            transform: scale(1.01);
+            transition: all 0.3s ease;
+        }
+
+        .loading-spinner {
+            display: none;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .spinner-border-custom {
+            width: 3rem;
+            height: 3rem;
+            border: 0.3em solid rgba(52, 152, 219, 0.25);
+            border-right-color: var(--secondary-color);
+        }
+
+        .offline-indicator {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: #e74c3c;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 14px;
+            z-index: 1000;
+            display: none;
+            animation: slideInLeft 0.5s ease-out;
+        }
+
+        .offline-indicator.online {
+            background: #27ae60;
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @media print {
+            body * {
+                visibility: hidden;
+            }
+            
+            #cardToDownload, #cardToDownload * {
+                visibility: visible;
+            }
+            
+            #cardToDownload {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 300px !important;
+                height: 450px !important;
+                margin: 0 !important;
+                box-shadow: none !important;
+            }
+            
+            @page {
+                size: A4;
+                margin: 20mm;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .member-card {
+                width: 100%;
+                max-width: 350px;
+            }
+            
+            .nav-tabs .nav-link {
+                padding: 10px 15px;
+                font-size: 14px;
+            }
+
+            .install-prompt {
+                position: relative;
+                top: auto;
+                right: auto;
+                margin-top: 10px;
+                display: block !important;
+            }
+        }
+
+        .modal-custom {
+            backdrop-filter: blur(10px);
+        }
+
+        .modal-content-custom {
+            border-radius: 20px;
+            border: none;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .modal-header-custom {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border-radius: 20px 20px 0 0;
+            border: none;
+        }
+
+        .btn-close-white {
+            filter: invert(1) grayscale(100%) brightness(200%);
         }
     </style>
 </head>
-<body class="min-h-screen gradient-bg">
-    <!-- Floating Background Elements -->
-    <div class="fixed inset-0 overflow-hidden pointer-events-none">
-        <div class="absolute top-1/4 left-1/4 w-64 h-64 bg-white opacity-5 rounded-full floating-animation"></div>
-        <div class="absolute top-3/4 right-1/4 w-48 h-48 bg-white opacity-5 rounded-full floating-animation" style="animation-delay: -3s;"></div>
-        <div class="absolute top-1/2 left-3/4 w-32 h-32 bg-white opacity-5 rounded-full floating-animation" style="animation-delay: -1.5s;"></div>
-    </div>
-
-    <div class="container mx-auto px-4 py-8 relative z-10">
-        <!-- Header -->
-        <div class="text-center mb-12">
-            <div class="inline-block p-4 glass-effect rounded-2xl mb-6">
-                <h1 class="text-5xl font-bold text-white mb-3">
-                    <span class="bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent">✨ HARINFOOD</span>
-                    <span class="text-white">Member</span>
-                </h1>
-                <p class="text-white/80 text-lg font-medium">Sistem Kartu Member HARINFOOD</p>
+<body>
+    <div class="container-fluid">
+        <div class="main-container">
+            <div class="header">
+                <h1><i class="fas fa-utensils"></i> HARINFOOD</h1>
+                <p class="mb-0">Sistem Manajemen Kartu Member</p>
+                <div class="install-prompt" id="installPrompt">
+                    <i class="fas fa-download"></i> Install App
+                </div>
             </div>
-        </div>
 
-        <!-- Navigation Tabs -->
-        <div class="flex justify-center mb-12">
-            <div class="glass-effect rounded-2xl p-2 card-shadow">
-                <button id="tab-form" class="tab-button px-8 py-4 rounded-xl bg-white text-gray-800 font-semibold transition-all duration-300">
-                    <span class="relative z-10">🎨 Buat Member Baru</span>
-                </button>
-                <button id="tab-list" class="tab-button px-8 py-4 rounded-xl text-white font-semibold transition-all duration-300 hover:bg-white/10">
-                    <span class="relative z-10">👥 Daftar Member</span>
-                </button>
-            </div>
-        </div>
+            <ul class="nav nav-tabs" id="mainTabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="register-tab" data-bs-toggle="tab" data-bs-target="#register" type="button" role="tab">
+                        <i class="fas fa-user-plus"></i> Daftar Member
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="members-tab" data-bs-toggle="tab" data-bs-target="#members" type="button" role="tab">
+                        <i class="fas fa-users"></i> Daftar Member
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="card-tab" data-bs-toggle="tab" data-bs-target="#card" type="button" role="tab">
+                        <i class="fas fa-id-card"></i> Cetak Kartu
+                    </button>
+                </li>
+            </ul>
 
-        <!-- Form Section -->
-        <div id="form-section" class="max-w-7xl mx-auto">
-            <div class="grid lg:grid-cols-2 gap-12">
-                <!-- Form Input -->
-                <div class="glass-effect rounded-3xl p-8 card-shadow hover-scale">
-                    <div class="flex items-center mb-8">
-                        <div class="w-12 h-12 gold-accent rounded-xl flex items-center justify-center mr-4">
-                            <span class="text-white text-xl font-bold">📝</span>
-                        </div>
-                        <h2 class="text-3xl font-bold text-white">Data Member</h2>
-                    </div>
+            <div class="tab-content" id="mainTabContent">
+                <!-- Tab Pendaftaran -->
+                <div class="tab-pane fade show active" id="register" role="tabpanel">
+                    <h3 class="mb-4"><i class="fas fa-user-plus text-primary"></i> Pendaftaran Member Baru</h3>
                     
-                    <form id="member-form" class="space-y-6">
-                        <!-- Photo Section -->
-                        <div class="space-y-4">
-                            <label class="block text-white font-semibold text-lg">📸 Foto Member</label>
-                            <div class="grid grid-cols-2 gap-4">
-                                <button type="button" id="camera-btn" class="premium-button text-white font-semibold py-4 px-6 rounded-xl">
-                                    📷 Ambil Foto
-                                </button>
-                                <input type="file" id="photo-input" accept="image/*" 
-                                       class="file:premium-button file:border-0 file:text-white file:font-semibold file:py-4 file:px-6 file:rounded-xl file:mr-4 text-white bg-white/10 rounded-xl border border-white/20">
-                            </div>
-                            <div id="camera-switch" class="hidden">
-                                <button type="button" id="switch-camera-btn" class="w-full bg-purple-500 hover:bg-purple-600 text-white font-semibold py-3 px-6 rounded-xl transition-all">
-                                    🔄 Ganti Kamera (Depan/Belakang)
-                                </button>
-                            </div>
-                            <video id="camera-video" class="w-full h-64 bg-black/20 rounded-xl hidden" autoplay></video>
-                            <div id="camera-controls" class="grid grid-cols-2 gap-4 hidden">
-                                <button type="button" id="capture-btn" class="bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-xl transition-all">
-                                    📸 Ambil Gambar
-                                </button>
-                                <button type="button" id="cancel-camera-btn" class="bg-red-500 hover:bg-red-600 text-white font-semibold py-3 px-6 rounded-xl transition-all">
-                                    ❌ Batal
-                                </button>
-                            </div>
-                            <canvas id="capture-canvas" class="hidden"></canvas>
-                        </div>
-                        
-                        <!-- Required Fields -->
-                        <div class="space-y-6 p-6 bg-white/5 rounded-2xl border border-white/10">
-                            <h3 class="text-white font-semibold text-lg flex items-center">
-                                <span class="w-2 h-2 bg-red-400 rounded-full mr-3"></span>
-                                Data Wajib
-                            </h3>
-                            
-                            <div>
-                                <label class="block text-white font-medium mb-3">👤 Nama Lengkap</label>
-                                <input type="text" id="name-input" required
-                                       class="input-focus w-full px-4 py-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/60 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400/20"
-                                       placeholder="Masukkan nama lengkap">
+                    <form id="memberForm">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label fw-bold">Foto Member *</label>
+                                    <div class="camera-container">
+                                        <video id="video" autoplay playsinline></video>
+                                        <canvas id="canvas"></canvas>
+                                        <div id="photoPreview" style="display: none; position: relative;">
+                                            <img id="capturedPhoto" class="photo-preview" alt="Foto Member">
+                            <button type="button" class="btn btn-success-custom btn-sm" id="downloadPhotoBtn" onclick="downloadPhoto()" style="position: absolute; bottom: 10px; right: 10px; width: 30px; height: 30px; border-radius: 50%; padding: 0; display: flex; align-items: center; justify-content: center;">
+                                <i class="fas fa-arrow-down" style="font-size: 12px;"></i>
+                            </button>
+                                        </div>
+                                        <div class="mt-3">
+                                            <button type="button" class="btn btn-primary-custom btn-custom me-2" id="startCamera">
+                                                <i class="fas fa-camera"></i> Buka Kamera
+                                            </button>
+                                            <button type="button" class="btn btn-success-custom btn-custom me-2" id="capturePhoto" style="display: none;">
+                                                <i class="fas fa-camera-retro"></i> Ambil Foto
+                                            </button>
+                                            <button type="button" class="btn btn-warning-custom btn-custom" id="switchCamera" style="display: none;">
+                                                <i class="fas fa-sync-alt"></i> Ganti Kamera
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             
-                            <div>
-                                <label class="block text-white font-medium mb-3">🏠 Alamat</label>
-                                <textarea id="address-input" required rows="3"
-                                          class="input-focus w-full px-4 py-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/60 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400/20 resize-none"
-                                          placeholder="Masukkan alamat lengkap"></textarea>
-                            </div>
-                            
-                            <div>
-                                <label class="block text-white font-medium mb-3">📞 Nomor Telepon</label>
-                                <input type="tel" id="phone-input" required
-                                       class="input-focus w-full px-4 py-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/60 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400/20"
-                                       placeholder="Contoh: 08123456789">
-                            </div>
-                        </div>
-                        
-                        <!-- Optional Fields -->
-                        <div class="space-y-6 p-6 bg-white/5 rounded-2xl border border-white/10">
-                            <h3 class="text-white font-semibold text-lg flex items-center">
-                                <span class="w-2 h-2 bg-green-400 rounded-full mr-3"></span>
-                                Data Tambahan <span class="text-white/60 text-sm ml-2">(Opsional)</span>
-                            </h3>
-                            
-                            <div class="grid md:grid-cols-2 gap-6">
-                                <div>
-                                    <label class="block text-white font-medium mb-3">📧 Email</label>
-                                    <input type="email" id="email-input"
-                                           class="input-focus w-full px-4 py-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/60 focus:border-blue-400 focus:ring-2 focus:ring-blue-400/20"
-                                           placeholder="nama@email.com">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="nama" class="form-label fw-bold">Nama Lengkap *</label>
+                                    <input type="text" class="form-control" id="nama" required>
                                 </div>
                                 
-                                <div>
-                                    <label class="block text-white font-medium mb-3">🎂 Tanggal Lahir</label>
-                                    <input type="date" id="birthdate-input"
-                                           class="input-focus w-full px-4 py-4 bg-white/10 border border-white/20 rounded-xl text-white focus:border-blue-400 focus:ring-2 focus:ring-blue-400/20">
+                                <div class="mb-3">
+                                    <label for="alamat" class="form-label fw-bold">Alamat *</label>
+                                    <textarea class="form-control" id="alamat" rows="3" required></textarea>
                                 </div>
                                 
-                                <div>
-                                    <label class="block text-white font-medium mb-3">👤 Jenis Kelamin</label>
-                                    <select id="gender-input"
-                                            class="input-focus w-full px-4 py-4 bg-white/10 border border-white/20 rounded-xl text-white focus:border-blue-400 focus:ring-2 focus:ring-blue-400/20">
-                                        <option value="" class="bg-gray-800">Pilih Jenis Kelamin</option>
-                                        <option value="Laki-laki" class="bg-gray-800">Laki-laki</option>
-                                        <option value="Perempuan" class="bg-gray-800">Perempuan</option>
-                                    </select>
-                                </div>
-                                
-                                <div>
-                                    <label class="block text-white font-medium mb-3">💼 Pekerjaan</label>
-                                    <input type="text" id="job-input"
-                                           class="input-focus w-full px-4 py-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/60 focus:border-blue-400 focus:ring-2 focus:ring-blue-400/20"
-                                           placeholder="Karyawan Swasta">
+                                <div class="mb-3">
+                                    <label for="whatsapp" class="form-label fw-bold">No. WhatsApp *</label>
+                                    <input type="tel" class="form-control" id="whatsapp" placeholder="08xxxxxxxxxx" required>
                                 </div>
                             </div>
                         </div>
                         
-                        <!-- Member Code -->
-                        <div>
-                            <label class="block text-white font-medium mb-3">🔢 Kode Member (Otomatis)</label>
-                            <input type="text" id="member-code-input" readonly
-                                   class="w-full px-4 py-4 bg-gray-600/50 border border-gray-500/50 rounded-xl text-gray-300 cursor-not-allowed"
-                                   placeholder="Akan terisi otomatis dari nomor telepon">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="mb-3">
+                                    <label for="instagram" class="form-label fw-bold">Instagram</label>
+                                    <input type="text" class="form-control" id="instagram" placeholder="@username">
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-4">
+                                <div class="mb-3">
+                                    <label for="facebook" class="form-label fw-bold">Facebook</label>
+                                    <input type="text" class="form-control" id="facebook" placeholder="Nama Facebook">
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-4">
+                                <div class="mb-3">
+                                    <label for="tiktok" class="form-label fw-bold">TikTok</label>
+                                    <input type="text" class="form-control" id="tiktok" placeholder="@username">
+                                </div>
+                            </div>
                         </div>
                         
-                        <button type="submit" class="w-full premium-button text-white font-bold py-5 px-8 rounded-xl text-lg">
-                            ✨ Buat Kartu Member
-                        </button>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-success-custom btn-custom btn-lg">
+                                <i class="fas fa-save"></i> Daftar Member
+                            </button>
+                        </div>
                     </form>
+                    
+                    <div id="message"></div>
+                    <div class="loading-spinner" id="loadingSpinner">
+                        <div class="spinner-border spinner-border-custom" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                        <p class="mt-2">Sedang memproses...</p>
+                    </div>
                 </div>
 
-                <!-- Preview Card -->
-                <div class="glass-effect rounded-3xl p-8 card-shadow hover-scale">
-                    <div class="flex items-center mb-8">
-                        <div class="w-12 h-12 gold-accent rounded-xl flex items-center justify-center mr-4">
-                            <span class="text-white text-xl font-bold">👁️</span>
+                <!-- Tab Daftar Member -->
+                <div class="tab-pane fade" id="members" role="tabpanel">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h3><i class="fas fa-users text-primary"></i> Daftar Member</h3>
+                        <div>
+                            <button class="btn btn-success-custom btn-custom me-2" onclick="downloadExcel()">
+                                <i class="fas fa-file-excel"></i> Download Excel
+                            </button>
+                            <button class="btn btn-primary-custom btn-custom" onclick="loadMembers()">
+                                <i class="fas fa-sync-alt"></i> Refresh
+                            </button>
                         </div>
-                        <h2 class="text-3xl font-bold text-white">Preview Kartu</h2>
                     </div>
                     
-                    <div class="flex justify-center mb-8">
-                        <div id="card-preview" class="member-card p-6 relative">
-                            <!-- Card Header -->
-                            <div class="relative z-20 text-center pt-6 pb-4">
-                                <h2 class="text-2xl font-bold text-white tracking-wider mb-1">HARINFOOD</h2>
-                                <p class="text-white/90 text-sm font-medium tracking-wide">HARINFOOD MEMBER</p>
+                    <div class="table-responsive">
+                        <table class="table table-custom">
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Foto</th>
+                                    <th>Nama</th>
+                                    <th>WhatsApp</th>
+                                    <th>Alamat</th>
+                                    <th>Terdaftar</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody id="membersTable">
+                                <tr>
+                                    <td colspan="7" class="text-center">
+                                        <div class="loading-spinner">
+                                            <div class="spinner-border spinner-border-custom" role="status"></div>
+                                            <p class="mt-2">Memuat data member...</p>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Tab Cetak Kartu -->
+                <div class="tab-pane fade" id="card" role="tabpanel">
+                    <h3 class="mb-4"><i class="fas fa-id-card text-primary"></i> Cetak Kartu Member</h3>
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="selectMember" class="form-label fw-bold">Pilih Member</label>
+                                <select class="form-select" id="selectMember">
+                                    <option value="">Pilih member untuk dicetak kartunya</option>
+                                </select>
                             </div>
                             
-                            <!-- Card Content -->
-                            <div class="relative z-10 text-center px-4">
-                                <!-- Photo -->
-                                <div class="mb-6">
-                                    <img id="preview-photo" 
-                                         src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='120' viewBox='0 0 100 120'%3E%3Crect width='100' height='120' rx='15' fill='%23e5e7eb'/%3E%3Ctext x='50' y='70' text-anchor='middle' fill='%23666' font-size='24'%3E👤%3C/text%3E%3C/svg%3E" 
-                                         class="photo-frame mx-auto" alt="Foto Member">
-                                </div>
-                                
-                                <!-- Member ID -->
-                                <div class="mb-6">
-                                    <p class="text-gray-600 text-xs font-medium mb-2 tracking-wide">MEMBER ID</p>
-                                    <p id="member-id" class="text-gray-900 font-bold text-2xl tracking-wider">#001</p>
-                                </div>
-                                
-                                <!-- Member Info -->
-                                <div class="bg-gray-50 border border-gray-200 rounded-2xl p-4 shadow-inner">
-                                    <p class="text-gray-600 text-xs font-medium mb-2 tracking-wide">NAMA LENGKAP</p>
-                                    <p id="preview-name" class="text-gray-900 font-bold text-lg mb-4 tracking-wide">Nama Member</p>
-                                    
-                                    <!-- Barcode -->
+                            <button class="btn btn-primary-custom btn-custom" onclick="generateCard()">
+                                <i class="fas fa-id-card"></i> Generate Kartu
+                            </button>
+                            
+                            <button class="btn btn-success-custom btn-custom ms-2" onclick="printCard()" id="printBtn" style="display: none;">
+                                <i class="fas fa-print"></i> Cetak Kartu
+                            </button>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <div id="memberCard" style="display: none;">
+                                <div class="member-card" id="cardToDownload">
+                                    <div class="member-card-header">
+                                        <h3>HARINFOOD</h3>
+                                        <small>Member Card</small>
+                                    </div>
+                                    <div class="member-card-body">
+                                        <img id="cardPhoto" class="member-photo" alt="Foto Member">
+                                        <div class="member-info">
+                                            <h4 id="cardName"></h4>
+                                        </div>
+                                    </div>
                                     <div class="barcode-container">
-                                        <svg id="barcode-svg" width="160" height="45" class="mx-auto">
-                                            <!-- Barcode will be generated here -->
-                                        </svg>
-                                        <p id="preview-phone" class="text-gray-800 text-xs font-mono mt-2 tracking-wider">1234567890</p>
+                                        <svg id="barcode"></svg>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    
-                    <div class="text-center">
-                        <button id="print-card" class="premium-button text-white font-bold py-4 px-8 rounded-xl disabled:opacity-50 disabled:cursor-not-allowed" disabled>
-                            🖨️ Cetak Kartu
-                        </button>
-                    </div>
                 </div>
-            </div>
-        </div>
-
-        <!-- Member List Section -->
-        <div id="list-section" class="max-w-7xl mx-auto hidden">
-            <div class="glass-effect rounded-3xl p-8 card-shadow">
-                <!-- Header -->
-                <div class="flex flex-col md:flex-row justify-between items-center mb-8">
-                    <div class="flex items-center mb-4 md:mb-0">
-                        <div class="w-12 h-12 gold-accent rounded-xl flex items-center justify-center mr-4">
-                            <span class="text-white text-xl font-bold">👥</span>
-                        </div>
-                        <h2 class="text-3xl font-bold text-white">Daftar Member</h2>
-                    </div>
-                    <div class="stats-card px-6 py-3 rounded-xl">
-                        <span class="text-white/80 text-sm">Total Member: </span>
-                        <span id="total-members" class="text-white font-bold text-lg">0</span>
-                    </div>
-                </div>
-                
-                <!-- Search Bar -->
-                <div class="search-container mb-8">
-                    <input type="text" id="search-input" 
-                           class="w-full pl-14 pr-6 py-5 bg-white/10 border border-white/20 rounded-2xl text-white placeholder-white/60 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400/20 text-lg"
-                           placeholder="Cari member berdasarkan nama, ID, atau nomor telepon...">
-                </div>
-                
-                <!-- Members Grid -->
-                <div id="members-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Member cards will be inserted here -->
-                </div>
-                
-                <!-- Empty State -->
-                <div id="empty-state" class="text-center py-16">
-                    <div class="text-8xl mb-6">📋</div>
-                    <h3 class="text-2xl font-bold text-white mb-4">Belum ada member</h3>
-                    <p class="text-white/70 text-lg">Buat member pertama Anda dengan mengklik tab "Buat Member Baru"</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Print Area (Hidden) -->
-        <div class="print-area hidden">
-            <div id="print-content" class="flex justify-center items-center min-h-screen">
-                <!-- Card to be printed will be inserted here -->
             </div>
         </div>
     </div>
 
+    <!-- Offline Indicator -->
+    <div class="offline-indicator" id="offlineIndicator">
+        <i class="fas fa-wifi"></i> <span id="connectionStatus">Offline</span>
+    </div>
+
+    <!-- Modal Edit Member -->
+    <div class="modal fade modal-custom" id="editMemberModal" tabindex="-1" aria-labelledby="editMemberModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content modal-content-custom">
+                <div class="modal-header modal-header-custom">
+                    <h5 class="modal-title" id="editMemberModalLabel">
+                        <i class="fas fa-user-edit"></i> Edit Member
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="editMemberForm">
+                        <input type="hidden" id="editMemberOriginalPhone">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label fw-bold">Foto Member</label>
+                                    <div class="text-center">
+                                        <img id="editMemberPhoto" class="photo-preview mb-3" alt="Foto Member" style="max-width: 200px;">
+                                        <div>
+                                            <button type="button" class="btn btn-primary-custom btn-custom" id="editStartCamera">
+                                                <i class="fas fa-camera"></i> Ganti Foto
+                                            </button>
+                                        </div>
+                                        <div id="editCameraContainer" style="display: none;" class="mt-3">
+                                            <video id="editVideo" autoplay playsinline style="width: 100%; max-width: 300px; border-radius: 10px;"></video>
+                                            <canvas id="editCanvas" style="display: none;"></canvas>
+                                            <div class="mt-2">
+                                                <button type="button" class="btn btn-success-custom btn-custom me-2" id="editCapturePhoto">
+                                                    <i class="fas fa-camera-retro"></i> Ambil Foto
+                                                </button>
+                                                <button type="button" class="btn btn-danger-custom btn-custom" id="editCancelCamera">
+                                                    <i class="fas fa-times"></i> Batal
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="editNama" class="form-label fw-bold">Nama Lengkap *</label>
+                                    <input type="text" class="form-control" id="editNama" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="editAlamat" class="form-label fw-bold">Alamat *</label>
+                                    <textarea class="form-control" id="editAlamat" rows="3" required></textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="editWhatsapp" class="form-label fw-bold">No. WhatsApp *</label>
+                                    <input type="tel" class="form-control" id="editWhatsapp" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="mb-3">
+                                    <label for="editInstagram" class="form-label fw-bold">Instagram</label>
+                                    <input type="text" class="form-control" id="editInstagram">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="mb-3">
+                                    <label for="editFacebook" class="form-label fw-bold">Facebook</label>
+                                    <input type="text" class="form-control" id="editFacebook">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="mb-3">
+                                    <label for="editTiktok" class="form-label fw-bold">TikTok</label>
+                                    <input type="text" class="form-control" id="editTiktok">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger-custom btn-custom" onclick="deleteMember()">
+                        <i class="fas fa-trash"></i> Hapus Member
+                    </button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                    <button type="button" class="btn btn-success-custom btn-custom" onclick="updateMember()">
+                        <i class="fas fa-save"></i> Simpan Perubahan
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Global variables
-        let members = JSON.parse(localStorage.getItem('members')) || [];
-        let currentMemberId = 1;
-        let currentPhotoData = null;
-        let cameraStream = null;
-        let currentFacingMode = 'user'; // 'user' for front camera, 'environment' for back camera
+        // Service Worker Registration
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                const swCode = `
+                    const CACHE_NAME = 'harinfood-v1.0.0';
+                    const urlsToCache = [
+                        '/',
+                        'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css',
+                        'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css',
+                        'https://cdn.jsdelivr.net/npm/jsbarcode@3.11.5/dist/JsBarcode.all.min.js',
+                        'https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js',
+                        'https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js',
+                        'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js'
+                    ];
 
-        // DOM elements
-        const tabForm = document.getElementById('tab-form');
-        const tabList = document.getElementById('tab-list');
-        const formSection = document.getElementById('form-section');
-        const listSection = document.getElementById('list-section');
-        const memberForm = document.getElementById('member-form');
-        const photoInput = document.getElementById('photo-input');
-        const cameraBtn = document.getElementById('camera-btn');
-        const cameraVideo = document.getElementById('camera-video');
-        const cameraControls = document.getElementById('camera-controls');
-        const captureBtn = document.getElementById('capture-btn');
-        const cancelCameraBtn = document.getElementById('cancel-camera-btn');
-        const captureCanvas = document.getElementById('capture-canvas');
-        const switchCameraBtn = document.getElementById('switch-camera-btn');
-        const cameraSwitch = document.getElementById('camera-switch');
-        const nameInput = document.getElementById('name-input');
-        const addressInput = document.getElementById('address-input');
-        const phoneInput = document.getElementById('phone-input');
-        const emailInput = document.getElementById('email-input');
-        const birthdateInput = document.getElementById('birthdate-input');
-        const genderInput = document.getElementById('gender-input');
-        const jobInput = document.getElementById('job-input');
-        const memberCodeInput = document.getElementById('member-code-input');
-        const previewPhoto = document.getElementById('preview-photo');
-        const previewName = document.getElementById('preview-name');
-        const previewPhone = document.getElementById('preview-phone');
-        const barcodesvg = document.getElementById('barcode-svg');
-        const memberId = document.getElementById('member-id');
-        const printCard = document.getElementById('print-card');
-        const membersGrid = document.getElementById('members-grid');
-        const totalMembers = document.getElementById('total-members');
-        const emptyState = document.getElementById('empty-state');
-        const printContent = document.getElementById('print-content');
-        const searchInput = document.getElementById('search-input');
+                    self.addEventListener('install', event => {
+                        event.waitUntil(
+                            caches.open(CACHE_NAME)
+                                .then(cache => {
+                                    console.log('Opened cache');
+                                    return cache.addAll(urlsToCache);
+                                })
+                        );
+                    });
 
-        // Initialize
-        updateMembersList();
-        updateMemberId();
-        generateBarcode('1234567890');
+                    self.addEventListener('fetch', event => {
+                        event.respondWith(
+                            caches.match(event.request)
+                                .then(response => {
+                                    if (response) {
+                                        return response;
+                                    }
+                                    return fetch(event.request);
+                                }
+                            )
+                        );
+                    });
 
-        // Search functionality
-        searchInput.addEventListener('input', function() {
-            updateMembersList();
+                    self.addEventListener('activate', event => {
+                        event.waitUntil(
+                            caches.keys().then(cacheNames => {
+                                return Promise.all(
+                                    cacheNames.map(cacheName => {
+                                        if (cacheName !== CACHE_NAME) {
+                                            return caches.delete(cacheName);
+                                        }
+                                    })
+                                );
+                            })
+                        );
+                    });
+                `;
+
+                const blob = new Blob([swCode], { type: 'application/javascript' });
+                const swUrl = URL.createObjectURL(blob);
+
+                navigator.serviceWorker.register(swUrl)
+                    .then(registration => {
+                        console.log('SW registered: ', registration);
+                    })
+                    .catch(registrationError => {
+                        console.log('SW registration failed: ', registrationError);
+                    });
+            });
+        }
+
+        // PWA Install Prompt
+        let deferredPrompt;
+        const installPrompt = document.getElementById('installPrompt');
+
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            installPrompt.classList.add('show');
         });
 
-        // Tab switching
-        tabForm.addEventListener('click', () => {
-            switchTab('form');
+        installPrompt.addEventListener('click', async () => {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                const { outcome } = await deferredPrompt.userChoice;
+                console.log(`User response to the install prompt: ${outcome}`);
+                deferredPrompt = null;
+                installPrompt.classList.remove('show');
+            }
         });
 
-        tabList.addEventListener('click', () => {
-            switchTab('list');
+        window.addEventListener('appinstalled', () => {
+            console.log('PWA was installed');
+            installPrompt.classList.remove('show');
         });
 
-        function switchTab(tab) {
-            if (tab === 'form') {
-                tabForm.className = 'tab-button px-8 py-4 rounded-xl bg-white text-gray-800 font-semibold transition-all duration-300';
-                tabList.className = 'tab-button px-8 py-4 rounded-xl text-white font-semibold transition-all duration-300 hover:bg-white/10';
-                formSection.classList.remove('hidden');
-                listSection.classList.add('hidden');
+        // Online/Offline Status
+        const offlineIndicator = document.getElementById('offlineIndicator');
+        const connectionStatus = document.getElementById('connectionStatus');
+
+        function updateOnlineStatus() {
+            if (navigator.onLine) {
+                offlineIndicator.classList.add('online');
+                connectionStatus.innerHTML = '<i class="fas fa-wifi"></i> Online';
+                setTimeout(() => {
+                    offlineIndicator.style.display = 'none';
+                }, 3000);
             } else {
-                tabList.className = 'tab-button px-8 py-4 rounded-xl bg-white text-gray-800 font-semibold transition-all duration-300';
-                tabForm.className = 'tab-button px-8 py-4 rounded-xl text-white font-semibold transition-all duration-300 hover:bg-white/10';
-                listSection.classList.remove('hidden');
-                formSection.classList.add('hidden');
-                updateMembersList();
+                offlineIndicator.classList.remove('online');
+                connectionStatus.innerHTML = '<i class="fas fa-wifi-slash"></i> Offline';
+                offlineIndicator.style.display = 'block';
             }
         }
 
-        // Camera functionality
-        cameraBtn.addEventListener('click', async function() {
-            await startCamera();
-        });
+        window.addEventListener('online', updateOnlineStatus);
+        window.addEventListener('offline', updateOnlineStatus);
 
-        switchCameraBtn.addEventListener('click', async function() {
-            currentFacingMode = currentFacingMode === 'user' ? 'environment' : 'user';
-            await startCamera();
-        });
+        // Check initial status
+        updateOnlineStatus();
 
+        // Local Storage Management
+        const STORAGE_KEY = 'harinfood_members';
+        
+        let video = document.getElementById('video');
+        let canvas = document.getElementById('canvas');
+        let capturedPhotoData = null;
+        let currentStream = null;
+        let facingMode = 'user'; // 'user' untuk kamera depan, 'environment' untuk kamera belakang
+        let editCurrentStream = null;
+        let editCapturedPhotoData = null;
+
+        // Fungsi untuk menyimpan data ke localStorage
+        function saveToLocalStorage(members) {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(members));
+        }
+
+        // Fungsi untuk mengambil data dari localStorage
+        function getFromLocalStorage() {
+            const data = localStorage.getItem(STORAGE_KEY);
+            return data ? JSON.parse(data) : [];
+        }
+
+        // Fungsi untuk menambah member baru
+        function addMemberToStorage(memberData) {
+            const members = getFromLocalStorage();
+            members.push(memberData);
+            saveToLocalStorage(members);
+            return true;
+        }
+
+        // Fungsi untuk update member
+        function updateMemberInStorage(originalPhone, updatedMember) {
+            const members = getFromLocalStorage();
+            const index = members.findIndex(member => member.NO_WHATSAPP === originalPhone);
+            if (index !== -1) {
+                members[index] = updatedMember;
+                saveToLocalStorage(members);
+                return true;
+            }
+            return false;
+        }
+
+        // Fungsi untuk hapus member
+        function deleteMemberFromStorage(phone) {
+            const members = getFromLocalStorage();
+            const filteredMembers = members.filter(member => member.NO_WHATSAPP !== phone);
+            saveToLocalStorage(filteredMembers);
+            return true;
+        }
+
+        // Fungsi untuk mencari member berdasarkan phone
+        function findMemberByPhone(phone) {
+            const members = getFromLocalStorage();
+            return members.find(member => member.NO_WHATSAPP === phone);
+        }
+
+        // Fungsi untuk memulai kamera
         async function startCamera() {
             try {
-                // Stop existing stream if any
-                if (cameraStream) {
-                    cameraStream.getTracks().forEach(track => track.stop());
+                if (currentStream) {
+                    currentStream.getTracks().forEach(track => track.stop());
                 }
 
-                cameraStream = await navigator.mediaDevices.getUserMedia({ 
-                    video: { 
-                        facingMode: currentFacingMode,
-                        width: { ideal: 1280 },
-                        height: { ideal: 720 }
-                    } 
-                });
-                
-                cameraVideo.srcObject = cameraStream;
-                cameraVideo.classList.remove('hidden');
-                cameraControls.classList.remove('hidden');
-                cameraSwitch.classList.remove('hidden');
-                cameraBtn.style.display = 'none';
-                photoInput.style.display = 'none';
-                
-                // Update button text based on current camera
-                switchCameraBtn.innerHTML = currentFacingMode === 'user' ? 
-                    '🔄 Ganti ke Kamera Belakang' : 
-                    '🔄 Ganti ke Kamera Depan';
-                    
-            } catch (err) {
-                alert('Tidak dapat mengakses kamera. Pastikan browser mendukung kamera dan izin telah diberikan.');
-                console.error('Camera error:', err);
-            }
-        }
-
-        captureBtn.addEventListener('click', function() {
-            const canvas = captureCanvas;
-            const context = canvas.getContext('2d');
-            canvas.width = cameraVideo.videoWidth;
-            canvas.height = cameraVideo.videoHeight;
-            
-            context.drawImage(cameraVideo, 0, 0);
-            currentPhotoData = canvas.toDataURL('image/jpeg', 0.8);
-            previewPhoto.src = currentPhotoData;
-            
-            stopCamera();
-            updatePrintButton();
-        });
-
-        cancelCameraBtn.addEventListener('click', function() {
-            stopCamera();
-        });
-
-        function stopCamera() {
-            if (cameraStream) {
-                cameraStream.getTracks().forEach(track => track.stop());
-                cameraStream = null;
-            }
-            cameraVideo.classList.add('hidden');
-            cameraControls.classList.add('hidden');
-            cameraSwitch.classList.add('hidden');
-            cameraBtn.style.display = 'block';
-            photoInput.style.display = 'block';
-            currentFacingMode = 'user'; // Reset to front camera
-        }
-
-        // Photo upload handling
-        photoInput.addEventListener('change', function(e) {
-            const file = e.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    currentPhotoData = e.target.result;
-                    previewPhoto.src = currentPhotoData;
-                    updatePrintButton();
-                };
-                reader.readAsDataURL(file);
-            }
-        });
-
-        // Form input handling
-        nameInput.addEventListener('input', function() {
-            previewName.textContent = this.value || 'Nama Member';
-            updatePrintButton();
-        });
-
-        phoneInput.addEventListener('input', function() {
-            const phoneNumber = this.value || '';
-            memberCodeInput.value = phoneNumber;
-            previewPhone.textContent = phoneNumber || '1234567890';
-            generateBarcode(phoneNumber || '1234567890');
-            updatePrintButton();
-        });
-
-        // Barcode generation function
-        function generateBarcode(code) {
-            const svg = barcodesvg;
-            svg.innerHTML = '';
-            
-            if (!code || code.length === 0) {
-                code = '1234567890';
-            }
-            
-            const barWidth = 2;
-            const barHeight = 40;
-            let x = 10;
-            
-            // Start pattern
-            for (let i = 0; i < 3; i++) {
-                const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
-                rect.setAttribute('x', x);
-                rect.setAttribute('y', 2);
-                rect.setAttribute('width', barWidth);
-                rect.setAttribute('height', barHeight);
-                rect.setAttribute('fill', '#000000');
-                svg.appendChild(rect);
-                x += barWidth * 2;
-            }
-            
-            // Data bars
-            for (let i = 0; i < code.length && i < 10; i++) {
-                const digit = parseInt(code[i]) || 0;
-                const patterns = [
-                    [1,1,0,0,1,0], [1,0,1,0,0,1], [1,0,0,1,0,1], [0,1,1,0,1,0], [0,1,0,1,1,0],
-                    [0,0,1,1,1,0], [1,1,1,0,0,0], [1,0,1,1,0,0], [0,1,1,1,0,0], [1,1,0,1,0,0]
-                ];
-                
-                const pattern = patterns[digit];
-                
-                for (let j = 0; j < pattern.length; j++) {
-                    if (pattern[j] === 1) {
-                        const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
-                        rect.setAttribute('x', x);
-                        rect.setAttribute('y', 2);
-                        rect.setAttribute('width', barWidth);
-                        rect.setAttribute('height', barHeight);
-                        rect.setAttribute('fill', '#000000');
-                        svg.appendChild(rect);
+                const constraints = {
+                    video: {
+                        facingMode: facingMode,
+                        width: { ideal: 640 },
+                        height: { ideal: 480 }
                     }
-                    x += barWidth;
-                }
-                x += barWidth * 0.5;
-            }
-            
-            // End pattern
-            for (let i = 0; i < 3; i++) {
-                const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
-                rect.setAttribute('x', x);
-                rect.setAttribute('y', 2);
-                rect.setAttribute('width', barWidth);
-                rect.setAttribute('height', barHeight);
-                rect.setAttribute('fill', '#000000');
-                svg.appendChild(rect);
-                x += barWidth * 2;
+                };
+
+                currentStream = await navigator.mediaDevices.getUserMedia(constraints);
+                video.srcObject = currentStream;
+                
+                document.getElementById('startCamera').style.display = 'none';
+                document.getElementById('capturePhoto').style.display = 'inline-block';
+                document.getElementById('switchCamera').style.display = 'inline-block';
+                document.getElementById('photoPreview').style.display = 'none';
+                video.style.display = 'block';
+            } catch (error) {
+                console.error('Error accessing camera:', error);
+                showMessage('Gagal mengakses kamera. Pastikan browser memiliki izin kamera.', 'danger');
             }
         }
 
-        // Form submission
-        memberForm.addEventListener('submit', function(e) {
+        // Fungsi untuk mengganti kamera
+        function switchCamera() {
+            facingMode = facingMode === 'user' ? 'environment' : 'user';
+            startCamera();
+        }
+
+        // Fungsi untuk mengambil foto
+        function capturePhoto() {
+            const context = canvas.getContext('2d');
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+            context.drawImage(video, 0, 0);
+            
+            // Compress image untuk mengurangi ukuran
+            capturedPhotoData = canvas.toDataURL('image/jpeg', 0.7);
+            
+            document.getElementById('capturedPhoto').src = capturedPhotoData;
+            document.getElementById('photoPreview').style.display = 'block';
+            video.style.display = 'none';
+            
+            document.getElementById('capturePhoto').style.display = 'none';
+            document.getElementById('switchCamera').style.display = 'none';
+            
+            // Stop camera stream
+            if (currentStream) {
+                currentStream.getTracks().forEach(track => track.stop());
+            }
+            
+            showMessage('Foto berhasil diambil! Klik tombol download untuk menyimpan.', 'success');
+        }
+
+        // Fungsi untuk download image yang lebih kompatibel
+        function downloadImage(dataUrl, filename) {
+            const link = document.createElement('a');
+            link.href = dataUrl;
+            link.download = filename;
+            link.style.display = 'none';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        // Fungsi untuk download foto yang sudah diambil
+        function downloadPhoto() {
+            if (capturedPhotoData) {
+                try {
+                    downloadImage(capturedPhotoData, `harinfood_member_${Date.now()}.jpg`);
+                    showMessage('Foto berhasil didownload!', 'success');
+                } catch (error) {
+                    console.error('Error downloading photo:', error);
+                    showMessage('Gagal mendownload foto!', 'danger');
+                }
+            } else {
+                showMessage('Tidak ada foto untuk didownload!', 'warning');
+            }
+        }
+
+        // Event listeners untuk kamera
+        document.getElementById('startCamera').addEventListener('click', startCamera);
+        document.getElementById('capturePhoto').addEventListener('click', capturePhoto);
+        document.getElementById('switchCamera').addEventListener('click', switchCamera);
+
+        // Fungsi untuk menampilkan pesan
+        function showMessage(message, type) {
+            const messageDiv = document.getElementById('message');
+            messageDiv.innerHTML = `
+                <div class="alert alert-${type} alert-custom alert-dismissible fade show" role="alert">
+                    <i class="fas fa-${type === 'success' ? 'check-circle' : type === 'danger' ? 'exclamation-circle' : 'info-circle'}"></i>
+                    ${message}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            `;
+        }
+
+        // Fungsi untuk mengirim data member
+        function submitMember(memberData) {
+            document.getElementById('loadingSpinner').style.display = 'block';
+            
+            try {
+                // Simpan ke localStorage
+                const success = addMemberToStorage(memberData);
+                
+                if (success) {
+                    showMessage('Member berhasil didaftarkan dan disimpan!', 'success');
+                    document.getElementById('memberForm').reset();
+                    capturedPhotoData = null;
+                    document.getElementById('photoPreview').style.display = 'none';
+                    document.getElementById('startCamera').style.display = 'inline-block';
+                    video.style.display = 'block';
+                    loadMembers(); // Refresh daftar member
+                } else {
+                    showMessage('Gagal mendaftarkan member!', 'danger');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                showMessage('Terjadi kesalahan saat menyimpan data.', 'danger');
+            } finally {
+                document.getElementById('loadingSpinner').style.display = 'none';
+            }
+        }
+
+        // Event listener untuk form submit
+        document.getElementById('memberForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            const member = {
-                id: currentMemberId,
-                name: nameInput.value,
-                address: addressInput.value,
-                phone: phoneInput.value,
-                email: emailInput.value || '',
-                birthdate: birthdateInput.value || '',
-                gender: genderInput.value || '',
-                job: jobInput.value || '',
-                memberCode: phoneInput.value,
-                photo: currentPhotoData,
-                createdAt: new Date().toLocaleDateString('id-ID')
-            };
-
-            members.push(member);
-            localStorage.setItem('members', JSON.stringify(members));
-            
-            // Reset form
-            memberForm.reset();
-            currentPhotoData = null;
-            previewPhoto.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='120' viewBox='0 0 100 120'%3E%3Crect width='100' height='120' rx='15' fill='%23e5e7eb'/%3E%3Ctext x='50' y='70' text-anchor='middle' fill='%23666' font-size='24'%3E👤%3C/text%3E%3C/svg%3E";
-            previewName.textContent = 'Nama Member';
-            previewPhone.textContent = '1234567890';
-            generateBarcode('1234567890');
-            
-            currentMemberId++;
-            updateMemberId();
-            updatePrintButton();
-            
-            // Success notification
-            const notification = document.createElement('div');
-            notification.className = 'fixed top-4 right-4 bg-green-500 text-white px-6 py-4 rounded-xl shadow-lg z-50 transform translate-x-full transition-transform duration-300';
-            notification.innerHTML = '✅ Member berhasil ditambahkan!';
-            document.body.appendChild(notification);
-            
-            setTimeout(() => {
-                notification.style.transform = 'translateX(0)';
-            }, 100);
-            
-            setTimeout(() => {
-                notification.style.transform = 'translateX(full)';
-                setTimeout(() => {
-                    document.body.removeChild(notification);
-                }, 300);
-            }, 3000);
-        });
-
-        // Print functionality
-        printCard.addEventListener('click', function() {
-            const cardClone = document.getElementById('card-preview').cloneNode(true);
-            cardClone.classList.add('mx-auto');
-            printContent.innerHTML = '';
-            printContent.appendChild(cardClone);
-            
-            // Show print area
-            const printArea = document.querySelector('.print-area');
-            printArea.classList.remove('hidden');
-            printArea.style.display = 'flex';
-            
-            // Force browser to recognize the changes
-            setTimeout(() => {
-                // Trigger print dialog
-                if (window.print) {
-                    window.print();
-                } else {
-                    // Fallback for browsers that don't support window.print
-                    alert('Silakan gunakan Ctrl+P atau Cmd+P untuk mencetak');
-                }
-                
-                // Hide print area after printing
-                setTimeout(() => {
-                    printArea.classList.add('hidden');
-                    printArea.style.display = 'none';
-                }, 2000);
-            }, 500);
-        });
-
-        // Helper functions
-        function updateMemberId() {
-            if (members.length > 0) {
-                currentMemberId = Math.max(...members.map(m => m.id)) + 1;
-            }
-            memberId.textContent = `#${String(currentMemberId).padStart(3, '0')}`;
-        }
-
-        function updatePrintButton() {
-            const hasRequiredData = nameInput.value && addressInput.value && phoneInput.value;
-            printCard.disabled = !hasRequiredData;
-        }
-
-        function updateMembersList() {
-            const searchTerm = searchInput ? searchInput.value.toLowerCase() : '';
-            const filteredMembers = members.filter(member => 
-                member.name.toLowerCase().includes(searchTerm) ||
-                member.phone.includes(searchTerm) ||
-                (member.email && member.email.toLowerCase().includes(searchTerm)) ||
-                (member.memberCode && member.memberCode.includes(searchTerm)) ||
-                String(member.id).padStart(3, '0').includes(searchTerm)
-            );
-            
-            totalMembers.textContent = filteredMembers.length;
-            
-            if (filteredMembers.length === 0) {
-                membersGrid.classList.add('hidden');
-                emptyState.classList.remove('hidden');
-                if (searchTerm) {
-                    emptyState.innerHTML = `
-                        <div class="text-8xl mb-6">🔍</div>
-                        <h3 class="text-2xl font-bold text-white mb-4">Tidak ada hasil</h3>
-                        <p class="text-white/70 text-lg">Tidak ditemukan member dengan kata kunci "${searchTerm}"</p>
-                    `;
-                } else {
-                    emptyState.innerHTML = `
-                        <div class="text-8xl mb-6">📋</div>
-                        <h3 class="text-2xl font-bold text-white mb-4">Belum ada member</h3>
-                        <p class="text-white/70 text-lg">Buat member pertama Anda dengan mengklik tab "Buat Member Baru"</p>
-                    `;
-                }
+            // Validasi foto
+            if (!capturedPhotoData) {
+                showMessage('Silakan ambil foto terlebih dahulu!', 'warning');
                 return;
             }
             
-            membersGrid.classList.remove('hidden');
-            emptyState.classList.add('hidden');
+            // Validasi field wajib
+            const nama = document.getElementById('nama').value.trim();
+            const alamat = document.getElementById('alamat').value.trim();
+            const whatsapp = document.getElementById('whatsapp').value.trim();
             
-            membersGrid.innerHTML = filteredMembers.map(member => `
-                <div class="member-list-card rounded-2xl p-6 card-shadow">
-                    <div class="flex items-center space-x-4 mb-6">
-                        <img src="${member.photo || "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Ccircle cx='30' cy='30' r='30' fill='%23e5e7eb'/%3E%3Ctext x='30' y='36' text-anchor='middle' fill='%23666' font-size='24'%3E👤%3C/text%3E%3C/svg%3E"}" 
-                             class="w-16 h-16 rounded-full object-cover border-3 border-gray-200 shadow-lg" alt="Foto ${member.name}">
-                        <div>
-                            <h3 class="font-bold text-gray-800 text-lg">${member.name}</h3>
-                            <p class="text-gray-600 font-medium">ID: #${String(member.id).padStart(3, '0')}</p>
-                        </div>
-                    </div>
-                    
-                    <div class="space-y-3 text-sm text-gray-600 mb-6">
-                        <p class="flex items-center"><span class="font-semibold mr-2">🏠</span> ${member.address}</p>
-                        <p class="flex items-center"><span class="font-semibold mr-2">📞</span> ${member.phone}</p>
-                        ${member.email ? `<p class="flex items-center"><span class="font-semibold mr-2">📧</span> ${member.email}</p>` : ''}
-                        ${member.gender && member.job ? `<p class="flex items-center"><span class="font-semibold mr-2">👤</span> ${member.gender} • ${member.job}</p>` : ''}
-                        <p class="flex items-center"><span class="font-semibold mr-2">📊</span> ${member.memberCode}</p>
-                        <p class="flex items-center"><span class="font-semibold mr-2">📅</span> ${member.createdAt}</p>
-                    </div>
-                    
-                    <div class="flex space-x-3">
-                        <button onclick="printMemberCard(${member.id})" 
-                                class="flex-1 bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 px-4 rounded-xl transition-all hover:shadow-lg">
-                            🖨️ Cetak
-                        </button>
-                        <button onclick="deleteMember(${member.id})" 
-                                class="bg-red-500 hover:bg-red-600 text-white font-semibold py-3 px-4 rounded-xl transition-all hover:shadow-lg">
-                            🗑️
-                        </button>
-                    </div>
-                </div>
-            `).join('');
+            if (!nama) {
+                showMessage('Nama lengkap harus diisi!', 'warning');
+                return;
+            }
+            
+            if (!alamat) {
+                showMessage('Alamat harus diisi!', 'warning');
+                return;
+            }
+            
+            if (!whatsapp) {
+                showMessage('Nomor WhatsApp harus diisi!', 'warning');
+                return;
+            }
+            
+            // Validasi format WhatsApp
+            const whatsappRegex = /^(\+62|62|0)8[1-9][0-9]{6,9}$/;
+            if (!whatsappRegex.test(whatsapp.replace(/\s/g, ''))) {
+                showMessage('Format nomor WhatsApp tidak valid! Contoh: 08123456789', 'warning');
+                return;
+            }
+            
+            // Generate nomor member otomatis
+            const memberNumber = Date.now().toString();
+            
+            const memberData = {
+                action: 'addMember',
+                NO: memberNumber,
+                PHOTO: capturedPhotoData,
+                NAMA: nama,
+                ALAMAT: alamat,
+                NO_WHATSAPP: whatsapp.replace(/\s/g, ''), // Hapus spasi
+                INSTAGRAM: document.getElementById('instagram').value.trim() || '',
+                FACEBOOK: document.getElementById('facebook').value.trim() || '',
+                TIK_TOK: document.getElementById('tiktok').value.trim() || '',
+                WAKTU_TERDAFTAR: new Date().toLocaleString('id-ID', {
+                    year: 'numeric',
+                    month: '2-digit',
+                    day: '2-digit',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    second: '2-digit'
+                })
+            };
+            
+            console.log('Sending member data:', memberData);
+            submitMember(memberData);
+        });
+
+        // Fungsi untuk memuat daftar member
+        function loadMembers() {
+            try {
+                const members = getFromLocalStorage();
+                const tbody = document.getElementById('membersTable');
+                const selectMember = document.getElementById('selectMember');
+                
+                tbody.innerHTML = '';
+                selectMember.innerHTML = '<option value="">Pilih member untuk dicetak kartunya</option>';
+                
+                if (members.length > 0) {
+                    members.forEach((member, index) => {
+                        // Tambah ke tabel
+                        const row = tbody.insertRow();
+                        row.innerHTML = `
+                            <td>${index + 1}</td>
+                            <td style="position: relative;">
+                                <img src="${member.PHOTO}" alt="Foto" style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover;">
+                                <button class="btn btn-sm btn-secondary" onclick="downloadMemberPhoto('${member.NO_WHATSAPP}')" title="Download Foto" style="position: absolute; top: 2px; right: 2px; width: 20px; height: 20px; padding: 0; border-radius: 50%; display: flex; align-items: center; justify-content: center; opacity: 0.8;">
+                                    <i class="fas fa-arrow-down" style="font-size: 8px;"></i>
+                                </button>
+                            </td>
+                            <td>${member.NAMA}</td>
+                            <td>${member.NO_WHATSAPP}</td>
+                            <td>${member.ALAMAT}</td>
+                            <td>${member.WAKTU_TERDAFTAR}</td>
+                            <td>
+                                <div class="d-flex flex-nowrap gap-1">
+                                    <button class="btn btn-sm btn-warning-custom btn-custom" onclick="editMember('${member.NO_WHATSAPP}')" title="Edit Member" style="min-width: 32px;">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-primary-custom btn-custom" onclick="selectMemberForCard('${member.NO_WHATSAPP}')" title="Generate Kartu" style="min-width: 32px;">
+                                        <i class="fas fa-id-card"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-success-custom btn-custom" onclick="downloadMemberCard('${member.NO_WHATSAPP}')" title="Download Kartu" style="min-width: 32px;">
+                                        <i class="fas fa-download"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-danger-custom btn-custom" onclick="deleteMemberFromList('${member.NO_WHATSAPP}', '${member.NAMA}')" title="Hapus Member" style="min-width: 32px;">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        `;
+                        
+                        // Tambah ke select
+                        const option = document.createElement('option');
+                        option.value = member.NO_WHATSAPP;
+                        option.textContent = `${member.NAMA} (${member.NO_WHATSAPP})`;
+                        option.dataset.member = JSON.stringify(member);
+                        selectMember.appendChild(option);
+                    });
+                } else {
+                    tbody.innerHTML = '<tr><td colspan="7" class="text-center">Tidak ada data member</td></tr>';
+                }
+            } catch (error) {
+                console.error('Error loading members:', error);
+                document.getElementById('membersTable').innerHTML = '<tr><td colspan="7" class="text-center text-danger">Gagal memuat data member</td></tr>';
+            }
         }
 
-        function printMemberCard(memberId) {
-            const member = members.find(m => m.id === memberId);
-            if (!member) return;
+        // Fungsi untuk memilih member untuk kartu
+        function selectMemberForCard(whatsapp) {
+            document.getElementById('selectMember').value = whatsapp;
+            // Pindah ke tab cetak kartu
+            const cardTab = new bootstrap.Tab(document.getElementById('card-tab'));
+            cardTab.show();
+        }
+
+        // Fungsi untuk generate kartu member
+        function generateCard() {
+            const selectMember = document.getElementById('selectMember');
+            const selectedOption = selectMember.options[selectMember.selectedIndex];
             
-            // Generate barcode for print
-            const tempSvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-            tempSvg.setAttribute('width', '160');
-            tempSvg.setAttribute('height', '45');
-            
-            const barWidth = 2;
-            const barHeight = 40;
-            let x = 10;
-            
-            // Generate barcode pattern
-            for (let i = 0; i < 3; i++) {
-                const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
-                rect.setAttribute('x', x);
-                rect.setAttribute('y', 2);
-                rect.setAttribute('width', barWidth);
-                rect.setAttribute('height', barHeight);
-                rect.setAttribute('fill', 'black');
-                tempSvg.appendChild(rect);
-                x += barWidth * 2;
+            if (!selectedOption.value) {
+                showMessage('Silakan pilih member terlebih dahulu!', 'warning');
+                return;
             }
             
-            for (let i = 0; i < member.memberCode.length && i < 10; i++) {
-                const digit = parseInt(member.memberCode[i]) || 0;
-                const patterns = [
-                    [1,1,0,0,1,0], [1,0,1,0,0,1], [1,0,0,1,0,1], [0,1,1,0,1,0], [0,1,0,1,1,0],
-                    [0,0,1,1,1,0], [1,1,1,0,0,0], [1,0,1,1,0,0], [0,1,1,1,0,0], [1,1,0,1,0,0]
-                ];
-                const pattern = patterns[digit];
+            const member = JSON.parse(selectedOption.dataset.member);
+            
+            // Update kartu
+            document.getElementById('cardPhoto').src = member.PHOTO;
+            document.getElementById('cardName').textContent = member.NAMA;
+            
+            // Generate barcode
+            JsBarcode("#barcode", member.NO_WHATSAPP, {
+                format: "CODE128",
+                width: 2.2,
+                height: 100,
+                displayValue: false,
+                margin: 10
+            });
+            
+            document.getElementById('memberCard').style.display = 'block';
+            document.getElementById('printBtn').style.display = 'inline-block';
+        }
+
+        // Fungsi untuk cetak kartu
+        function printCard() {
+            const memberName = document.getElementById('cardName').textContent;
+            
+            try {
+                window.print();
+                showMessage(`Kartu member ${memberName} siap dicetak!`, 'success');
+            } catch (error) {
+                console.error('Error printing card:', error);
+                showMessage('Gagal mencetak kartu!', 'danger');
+            }
+        }
+
+        // Fungsi untuk download Excel
+        function downloadExcel() {
+            try {
+                const members = getFromLocalStorage();
                 
-                for (let j = 0; j < pattern.length; j++) {
-                    if (pattern[j] === 1) {
-                        const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
-                        rect.setAttribute('x', x);
-                        rect.setAttribute('y', 2);
-                        rect.setAttribute('width', barWidth);
-                        rect.setAttribute('height', barHeight);
-                        rect.setAttribute('fill', 'black');
-                        tempSvg.appendChild(rect);
-                    }
-                    x += barWidth;
+                if (members.length === 0) {
+                    showMessage('Tidak ada data member untuk diexport!', 'warning');
+                    return;
                 }
-                x += barWidth * 0.5;
+
+                // Prepare data untuk Excel (tanpa foto karena ukuran file)
+                const excelData = members.map((member, index) => ({
+                    'No': index + 1,
+                    'Nama': member.NAMA,
+                    'Alamat': member.ALAMAT,
+                    'No WhatsApp': member.NO_WHATSAPP,
+                    'Instagram': member.INSTAGRAM || '',
+                    'Facebook': member.FACEBOOK || '',
+                    'TikTok': member.TIK_TOK || '',
+                    'Waktu Terdaftar': member.WAKTU_TERDAFTAR
+                }));
+
+                // Create workbook dan worksheet
+                const wb = XLSX.utils.book_new();
+                const ws = XLSX.utils.json_to_sheet(excelData);
+
+                // Set column widths
+                const colWidths = [
+                    { wch: 5 },  // No
+                    { wch: 25 }, // Nama
+                    { wch: 30 }, // Alamat
+                    { wch: 15 }, // WhatsApp
+                    { wch: 15 }, // Instagram
+                    { wch: 15 }, // Facebook
+                    { wch: 15 }, // TikTok
+                    { wch: 20 }  // Waktu Terdaftar
+                ];
+                ws['!cols'] = colWidths;
+
+                // Add worksheet ke workbook
+                XLSX.utils.book_append_sheet(wb, ws, 'Data Member');
+
+                // Generate filename dengan timestamp
+                const timestamp = new Date().toISOString().slice(0, 19).replace(/:/g, '-');
+                const filename = `HARINFOOD_Members_${timestamp}.xlsx`;
+
+                // Download file
+                XLSX.writeFile(wb, filename);
+                
+                showMessage(`File Excel berhasil didownload: ${filename}`, 'success');
+            } catch (error) {
+                console.error('Error downloading Excel:', error);
+                showMessage('Gagal mendownload file Excel!', 'danger');
             }
-            
-            for (let i = 0; i < 3; i++) {
-                const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
-                rect.setAttribute('x', x);
-                rect.setAttribute('y', 2);
-                rect.setAttribute('width', barWidth);
-                rect.setAttribute('height', barHeight);
-                rect.setAttribute('fill', 'black');
-                tempSvg.appendChild(rect);
-                x += barWidth * 2;
+        }
+
+        // Fungsi untuk edit member
+        function editMember(phone) {
+            const member = findMemberByPhone(phone);
+            if (!member) {
+                showMessage('Member tidak ditemukan!', 'danger');
+                return;
             }
 
-            const cardHtml = `
-                <div class="member-card p-6 relative mx-auto">
-                    <div class="relative z-20 text-center pt-6 pb-4">
-                        <h2 class="text-2xl font-bold text-white tracking-wider mb-1">HARINFOOD</h2>
-                        <p class="text-white/90 text-sm font-medium tracking-wide">HARINFOOD MEMBER</p>
+            // Isi form edit dengan data member
+            document.getElementById('editMemberOriginalPhone').value = phone;
+            document.getElementById('editMemberPhoto').src = member.PHOTO;
+            document.getElementById('editNama').value = member.NAMA;
+            document.getElementById('editAlamat').value = member.ALAMAT;
+            document.getElementById('editWhatsapp').value = member.NO_WHATSAPP;
+            document.getElementById('editInstagram').value = member.INSTAGRAM || '';
+            document.getElementById('editFacebook').value = member.FACEBOOK || '';
+            document.getElementById('editTiktok').value = member.TIK_TOK || '';
+
+            editCapturedPhotoData = member.PHOTO;
+
+            // Show modal
+            const modal = new bootstrap.Modal(document.getElementById('editMemberModal'));
+            modal.show();
+        }
+
+        // Fungsi untuk update member
+        function updateMember() {
+            const originalPhone = document.getElementById('editMemberOriginalPhone').value;
+            const nama = document.getElementById('editNama').value.trim();
+            const alamat = document.getElementById('editAlamat').value.trim();
+            const whatsapp = document.getElementById('editWhatsapp').value.trim();
+
+            if (!nama || !alamat || !whatsapp) {
+                showMessage('Semua field wajib harus diisi!', 'warning');
+                return;
+            }
+
+            // Validasi format WhatsApp
+            const whatsappRegex = /^(\+62|62|0)8[1-9][0-9]{6,9}$/;
+            if (!whatsappRegex.test(whatsapp.replace(/\s/g, ''))) {
+                showMessage('Format nomor WhatsApp tidak valid!', 'warning');
+                return;
+            }
+
+            const updatedMember = {
+                NO: Date.now().toString(),
+                PHOTO: editCapturedPhotoData,
+                NAMA: nama,
+                ALAMAT: alamat,
+                NO_WHATSAPP: whatsapp.replace(/\s/g, ''),
+                INSTAGRAM: document.getElementById('editInstagram').value.trim(),
+                FACEBOOK: document.getElementById('editFacebook').value.trim(),
+                TIK_TOK: document.getElementById('editTiktok').value.trim(),
+                WAKTU_TERDAFTAR: findMemberByPhone(originalPhone).WAKTU_TERDAFTAR // Keep original registration time
+            };
+
+            const success = updateMemberInStorage(originalPhone, updatedMember);
+            
+            if (success) {
+                showMessage('Data member berhasil diupdate!', 'success');
+                loadMembers();
+                bootstrap.Modal.getInstance(document.getElementById('editMemberModal')).hide();
+            } else {
+                showMessage('Gagal mengupdate data member!', 'danger');
+            }
+        }
+
+        // Fungsi untuk hapus member dari modal edit
+        function deleteMember() {
+            const originalPhone = document.getElementById('editMemberOriginalPhone').value;
+            const member = findMemberByPhone(originalPhone);
+            
+            if (confirm(`Apakah Anda yakin ingin menghapus member ${member.NAMA}?`)) {
+                const success = deleteMemberFromStorage(originalPhone);
+                
+                if (success) {
+                    showMessage('Member berhasil dihapus!', 'success');
+                    loadMembers();
+                    bootstrap.Modal.getInstance(document.getElementById('editMemberModal')).hide();
+                } else {
+                    showMessage('Gagal menghapus member!', 'danger');
+                }
+            }
+        }
+
+        // Fungsi untuk hapus member langsung dari daftar
+        function deleteMemberFromList(phone, nama) {
+            if (confirm(`Apakah Anda yakin ingin menghapus member ${nama}?\n\nData yang dihapus tidak dapat dikembalikan!`)) {
+                const success = deleteMemberFromStorage(phone);
+                
+                if (success) {
+                    showMessage(`Member ${nama} berhasil dihapus!`, 'success');
+                    loadMembers();
+                } else {
+                    showMessage('Gagal menghapus member!', 'danger');
+                }
+            }
+        }
+
+        // Fungsi untuk download foto member
+        function downloadMemberPhoto(phone) {
+            const member = findMemberByPhone(phone);
+            if (!member) {
+                showMessage('Member tidak ditemukan!', 'danger');
+                return;
+            }
+
+            try {
+                downloadImage(member.PHOTO, `HARINFOOD_Photo_${member.NAMA.replace(/\s+/g, '_')}_${Date.now()}.jpg`);
+                showMessage(`Foto ${member.NAMA} berhasil didownload!`, 'success');
+            } catch (error) {
+                console.error('Error downloading photo:', error);
+                showMessage('Gagal mendownload foto!', 'danger');
+            }
+        }
+
+        // Fungsi untuk download kartu member langsung
+        function downloadMemberCard(phone) {
+            const member = findMemberByPhone(phone);
+            if (!member) {
+                showMessage('Member tidak ditemukan!', 'danger');
+                return;
+            }
+
+            // Create temporary card element
+            const tempCard = document.createElement('div');
+            tempCard.style.position = 'absolute';
+            tempCard.style.left = '-9999px';
+            tempCard.style.top = '-9999px';
+            tempCard.innerHTML = `
+                <div class="member-card" style="width: 300px; height: 450px; background: white; border-radius: 15px; padding: 30px 20px; border: 2px solid #e0e0e0; font-family: Arial, sans-serif;">
+                    <div style="text-align: center; margin-bottom: 30px; padding-bottom: 20px; border-bottom: 2px solid #f0f0f0;">
+                        <h3 style="color: #000; font-size: 1.8rem; font-weight: bold; margin: 0; letter-spacing: 2px;">HARINFOOD</h3>
+                        <small style="color: #666; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;">Member Card</small>
                     </div>
-                    
-                    <div class="relative z-10 text-center px-4">
-                        <div class="mb-6">
-                            <img src="${member.photo || "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='120' viewBox='0 0 100 120'%3E%3Crect width='100' height='120' rx='15' fill='%23e5e7eb'/%3E%3Ctext x='50' y='70' text-anchor='middle' fill='%23666' font-size='24'%3E👤%3C/text%3E%3C/svg%3E"}" 
-                                 class="photo-frame mx-auto" alt="Foto ${member.name}">
+                    <div style="text-align: center; margin-bottom: 30px;">
+                        <img src="${member.PHOTO}" style="width: 160px; height: 160px; border-radius: 50%; object-fit: cover; border: 2px solid #ddd; margin-bottom: 20px; display: block; margin-left: auto; margin-right: auto;" alt="Foto Member">
+                        <div>
+                            <h4 style="color: #000; font-size: 1.6rem; margin-bottom: 10px; font-weight: bold;">${member.NAMA}</h4>
                         </div>
-                        
-                        <div class="mb-6">
-                            <p class="text-gray-600 text-xs font-medium mb-2 tracking-wide">MEMBER ID</p>
-                            <p class="text-gray-900 font-bold text-2xl tracking-wider">#${String(member.id).padStart(3, '0')}</p>
-                        </div>
-                        
-                        <div class="bg-gray-50 border border-gray-200 rounded-2xl p-4 shadow-inner">
-                            <p class="text-gray-600 text-xs font-medium mb-2 tracking-wide">NAMA LENGKAP</p>
-                            <p class="text-gray-900 font-bold text-lg mb-4 tracking-wide">${member.name}</p>
-                            
-                            <div class="barcode-container">
-                                ${tempSvg.outerHTML}
-                                <p class="text-gray-800 text-xs font-mono mt-2 tracking-wider">${member.memberCode}</p>
-                            </div>
-                        </div>
+                    </div>
+                    <div style="text-align: center; margin-top: auto; padding-top: 20px; border-top: 2px solid #f0f0f0;">
+                        <svg id="tempBarcode"></svg>
                     </div>
                 </div>
             `;
             
-            printContent.innerHTML = cardHtml;
+            document.body.appendChild(tempCard);
             
-            // Show print area
-            const printArea = document.querySelector('.print-area');
-            printArea.classList.remove('hidden');
-            printArea.style.display = 'flex';
+            // Generate barcode
+            JsBarcode("#tempBarcode", member.NO_WHATSAPP, {
+                format: "CODE128",
+                width: 2.2,
+                height: 100,
+                displayValue: false,
+                margin: 10
+            });
             
-            // Force browser to recognize the changes
-            setTimeout(() => {
-                // Trigger print dialog
-                if (window.print) {
-                    window.print();
-                } else {
-                    // Fallback for browsers that don't support window.print
-                    alert('Silakan gunakan Ctrl+P atau Cmd+P untuk mencetak');
-                }
+            // Convert to image and download
+            html2canvas(tempCard.firstElementChild, {
+                backgroundColor: '#ffffff',
+                scale: 2,
+                useCORS: true,
+                allowTaint: true,
+                width: 300,
+                height: 450
+            }).then(canvas => {
+                const link = document.createElement('a');
+                link.download = `HARINFOOD_Card_${member.NAMA.replace(/\s+/g, '_')}_${Date.now()}.jpg`;
+                link.href = canvas.toDataURL('image/jpeg', 0.9);
+                link.click();
+                showMessage(`Kartu member ${member.NAMA} berhasil didownload!`, 'success');
                 
-                // Hide print area after printing
-                setTimeout(() => {
-                    printArea.classList.add('hidden');
-                    printArea.style.display = 'none';
-                }, 2000);
-            }, 500);
+                // Remove temporary element
+                document.body.removeChild(tempCard);
+            }).catch(error => {
+                console.error('Error generating card image:', error);
+                showMessage('Gagal mendownload kartu!', 'danger');
+                document.body.removeChild(tempCard);
+            });
         }
 
-        function deleteMember(memberId) {
-            if (confirm('Apakah Anda yakin ingin menghapus member ini?')) {
-                members = members.filter(m => m.id !== memberId);
-                localStorage.setItem('members', JSON.stringify(members));
-                updateMembersList();
-                
-                // Success notification
-                const notification = document.createElement('div');
-                notification.className = 'fixed top-4 right-4 bg-red-500 text-white px-6 py-4 rounded-xl shadow-lg z-50 transform translate-x-full transition-transform duration-300';
-                notification.innerHTML = '✅ Member berhasil dihapus!';
-                document.body.appendChild(notification);
-                
-                setTimeout(() => {
-                    notification.style.transform = 'translateX(0)';
-                }, 100);
-                
-                setTimeout(() => {
-                    notification.style.transform = 'translateX(full)';
-                    setTimeout(() => {
-                        document.body.removeChild(notification);
-                    }, 300);
-                }, 3000);
+        // Event listeners untuk edit camera
+        document.getElementById('editStartCamera').addEventListener('click', async function() {
+            try {
+                if (editCurrentStream) {
+                    editCurrentStream.getTracks().forEach(track => track.stop());
+                }
+
+                const constraints = {
+                    video: {
+                        facingMode: 'user',
+                        width: { ideal: 640 },
+                        height: { ideal: 480 }
+                    }
+                };
+
+                editCurrentStream = await navigator.mediaDevices.getUserMedia(constraints);
+                document.getElementById('editVideo').srcObject = editCurrentStream;
+                document.getElementById('editCameraContainer').style.display = 'block';
+            } catch (error) {
+                console.error('Error accessing camera:', error);
+                showMessage('Gagal mengakses kamera!', 'danger');
             }
-        }
+        });
+
+        document.getElementById('editCapturePhoto').addEventListener('click', function() {
+            const video = document.getElementById('editVideo');
+            const canvas = document.getElementById('editCanvas');
+            const context = canvas.getContext('2d');
+            
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+            context.drawImage(video, 0, 0);
+            
+            editCapturedPhotoData = canvas.toDataURL('image/jpeg', 0.7);
+            document.getElementById('editMemberPhoto').src = editCapturedPhotoData;
+            document.getElementById('editCameraContainer').style.display = 'none';
+            
+            if (editCurrentStream) {
+                editCurrentStream.getTracks().forEach(track => track.stop());
+            }
+        });
+
+        document.getElementById('editCancelCamera').addEventListener('click', function() {
+            document.getElementById('editCameraContainer').style.display = 'none';
+            if (editCurrentStream) {
+                editCurrentStream.getTracks().forEach(track => track.stop());
+            }
+        });
+
+        // Load members saat halaman dimuat
+        document.addEventListener('DOMContentLoaded', function() {
+            loadMembers();
+        });
+
+        // Event listener untuk tab change
+        document.querySelectorAll('[data-bs-toggle="tab"]').forEach(tab => {
+            tab.addEventListener('shown.bs.tab', function(e) {
+                if (e.target.id === 'members-tab') {
+                    loadMembers();
+                }
+            });
+        });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'974c5384b0045d17',t:'MTc1NjEzNzg3Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97525bc5116840c2',t:'MTc1NjIwMTEzMC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
