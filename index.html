@@ -55,42 +55,6 @@
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
 
-        .install-prompt {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: rgba(255, 255, 255, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: 25px;
-            padding: 8px 16px;
-            color: white;
-            font-size: 14px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: none;
-        }
-
-        .install-prompt:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: translateY(-2px);
-        }
-
-        .install-prompt.show {
-            display: block;
-            animation: slideInRight 0.5s ease-out;
-        }
-
-        @keyframes slideInRight {
-            from {
-                opacity: 0;
-                transform: translateX(100px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
         .nav-tabs {
             border: none;
             background: var(--light-bg);
@@ -124,6 +88,7 @@
             background: white;
             padding: 30px;
             border-radius: 0 0 20px 20px;
+            padding-bottom: 120px; /* Extra space for sticky button */
         }
 
         .form-control, .form-select {
@@ -408,6 +373,166 @@
             }
         }
 
+        /* Sticky Submit Button */
+        .sticky-submit-btn {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1050;
+            min-width: 250px;
+            padding: 15px 40px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 50px;
+            background: linear-gradient(135deg, var(--success-color), #58d68d);
+            color: white;
+            border: none;
+            box-shadow: 0 10px 30px rgba(39, 174, 96, 0.4);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            animation: pulse 2s infinite;
+            display: none;
+        }
+
+        .sticky-submit-btn:hover {
+            transform: translateX(-50%) translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(39, 174, 96, 0.6);
+            background: linear-gradient(135deg, #229954, var(--success-color));
+        }
+
+        .sticky-submit-btn:active {
+            transform: translateX(-50%) translateY(-2px) scale(1.02);
+        }
+
+        .sticky-submit-btn.show {
+            display: block;
+            animation: slideInUp 0.5s ease-out;
+        }
+
+        .sticky-submit-btn.hidden {
+            opacity: 0;
+            pointer-events: none;
+            transform: translateX(-50%) translateY(100px);
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateX(-50%) translateY(100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 10px 30px rgba(39, 174, 96, 0.4);
+            }
+            50% {
+                box-shadow: 0 10px 30px rgba(39, 174, 96, 0.7), 0 0 0 15px rgba(39, 174, 96, 0.1);
+            }
+            100% {
+                box-shadow: 0 10px 30px rgba(39, 174, 96, 0.4);
+            }
+        }
+
+        /* Floating Registration Button */
+        .floating-register-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1050;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--success-color), #58d68d);
+            color: white;
+            border: none;
+            box-shadow: 0 8px 25px rgba(39, 174, 96, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            animation: pulse 2s infinite;
+        }
+
+        .floating-register-btn:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 15px 35px rgba(39, 174, 96, 0.6);
+            background: linear-gradient(135deg, #229954, var(--success-color));
+        }
+
+        .floating-register-btn:active {
+            transform: translateY(-2px) scale(1.05);
+        }
+
+        .floating-register-btn.hidden {
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(100px);
+        }
+
+        /* Floating button tooltip */
+        .floating-register-btn::before {
+            content: 'Daftar Member Baru';
+            position: absolute;
+            right: 80px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 14px;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s ease;
+        }
+
+        .floating-register-btn:hover::before {
+            opacity: 1;
+            right: 85px;
+        }
+
+        /* Mobile adjustments for floating button */
+        @media (max-width: 768px) {
+            .floating-register-btn {
+                bottom: 20px;
+                right: 20px;
+                width: 60px;
+                height: 60px;
+                font-size: 20px;
+            }
+
+            .floating-register-btn::before {
+                right: 70px;
+                font-size: 12px;
+                padding: 6px 10px;
+            }
+
+            .floating-register-btn:hover::before {
+                right: 75px;
+            }
+
+            .sticky-submit-btn {
+                min-width: 200px;
+                padding: 12px 30px;
+                font-size: 16px;
+                bottom: 15px;
+            }
+        }
+
+        /* Hide floating button on register tab */
+        .tab-pane#register.show.active ~ .floating-register-btn {
+            display: none;
+        }
+
         /* Responsive Design - Portrait Mode (Mobile) */
         @media (max-width: 768px) and (orientation: portrait) {
             .header h1 {
@@ -424,20 +549,12 @@
                 font-size: 14px;
             }
 
-            .install-prompt {
-                position: relative;
-                top: auto;
-                right: auto;
-                margin-top: 10px;
-                display: block !important;
-            }
-
             .main-container {
                 margin: 10px;
             }
 
             .tab-content {
-                padding: 20px 15px;
+                padding: 20px 15px 120px 15px;
             }
 
             #video {
@@ -499,7 +616,7 @@
             }
 
             .tab-content {
-                padding: 25px 20px;
+                padding: 25px 20px 120px 20px;
             }
 
             /* Layout untuk form pendaftaran dalam landscape */
@@ -563,14 +680,6 @@
                 padding: 4px 6px;
                 font-size: 12px;
             }
-
-            /* Install prompt in landscape */
-            .install-prompt {
-                top: 10px;
-                right: 10px;
-                padding: 6px 12px;
-                font-size: 13px;
-            }
         }
 
         /* Desktop/Large Screen Adjustments */
@@ -584,7 +693,7 @@
             }
 
             .tab-content {
-                padding: 40px;
+                padding: 40px 40px 120px 40px;
             }
 
             #video {
@@ -618,7 +727,7 @@
             }
 
             .tab-content {
-                padding: 20px;
+                padding: 20px 20px 120px 20px;
             }
 
             .member-card {
@@ -661,9 +770,6 @@
             <div class="header">
                 <h1><i class="fas fa-utensils"></i> HARINFOOD</h1>
                 <p class="mb-0">Sistem Manajemen Kartu Member</p>
-                <div class="install-prompt" id="installPrompt">
-                    <i class="fas fa-download"></i> Install App
-                </div>
             </div>
 
             <ul class="nav nav-tabs" id="mainTabs" role="tablist">
@@ -760,7 +866,7 @@
                         </div>
                         
                         <div class="text-center">
-                            <button type="submit" class="btn btn-success-custom btn-custom btn-lg">
+                            <button type="submit" class="btn btn-success-custom btn-custom btn-lg" id="normalSubmitBtn">
                                 <i class="fas fa-save"></i> Daftar Member
                             </button>
                         </div>
@@ -867,6 +973,16 @@
     <div class="offline-indicator" id="offlineIndicator">
         <i class="fas fa-wifi"></i> <span id="connectionStatus">Offline</span>
     </div>
+
+    <!-- Sticky Submit Button -->
+    <button class="sticky-submit-btn" id="stickySubmitBtn" type="button">
+        <i class="fas fa-save me-2"></i> DAFTAR MEMBER
+    </button>
+
+    <!-- Floating Registration Button -->
+    <button class="floating-register-btn" id="floatingRegisterBtn" title="Daftar Member Baru">
+        <i class="fas fa-user-plus"></i>
+    </button>
 
     <!-- Modal Edit Member -->
     <div class="modal fade modal-custom" id="editMemberModal" tabindex="-1" aria-labelledby="editMemberModalLabel" aria-hidden="true">
@@ -1088,31 +1204,6 @@
             });
         }
 
-        // PWA Install Prompt
-        let deferredPrompt;
-        const installPrompt = document.getElementById('installPrompt');
-
-        window.addEventListener('beforeinstallprompt', (e) => {
-            e.preventDefault();
-            deferredPrompt = e;
-            installPrompt.classList.add('show');
-        });
-
-        installPrompt.addEventListener('click', async () => {
-            if (deferredPrompt) {
-                deferredPrompt.prompt();
-                const { outcome } = await deferredPrompt.userChoice;
-                console.log(`User response to the install prompt: ${outcome}`);
-                deferredPrompt = null;
-                installPrompt.classList.remove('show');
-            }
-        });
-
-        window.addEventListener('appinstalled', () => {
-            console.log('PWA was installed');
-            installPrompt.classList.remove('show');
-        });
-
         // Online/Offline Status
         const offlineIndicator = document.getElementById('offlineIndicator');
         const connectionStatus = document.getElementById('connectionStatus');
@@ -1193,166 +1284,24 @@
             return members.find(member => member.NO_WHATSAPP === phone);
         }
 
-        // Polyfill untuk browser lama
-        function getUserMediaPolyfill() {
-            // Cek dukungan getUserMedia dengan berbagai prefix
-            navigator.getUserMedia = navigator.getUserMedia ||
-                                   navigator.webkitGetUserMedia ||
-                                   navigator.mozGetUserMedia ||
-                                   navigator.msGetUserMedia;
-
-            // Polyfill untuk mediaDevices
-            if (!navigator.mediaDevices) {
-                navigator.mediaDevices = {};
-            }
-
-            // Polyfill untuk getUserMedia modern
-            if (!navigator.mediaDevices.getUserMedia) {
-                navigator.mediaDevices.getUserMedia = function(constraints) {
-                    return new Promise(function(resolve, reject) {
-                        if (navigator.getUserMedia) {
-                            navigator.getUserMedia(constraints, resolve, reject);
-                        } else {
-                            reject(new Error('getUserMedia tidak didukung di browser ini'));
-                        }
-                    });
-                };
-            }
-        }
-
-        // Fungsi untuk memulai kamera dengan kompatibilitas maksimal
+        // Fungsi untuk memulai kamera (versi original yang berfungsi)
         async function startCamera() {
             try {
-                // Jalankan polyfill terlebih dahulu
-                getUserMediaPolyfill();
-
                 // Stop stream yang sedang berjalan
                 if (currentStream) {
-                    currentStream.getTracks().forEach(track => {
-                        track.stop();
-                        console.log('Stopped existing track:', track.kind);
-                    });
+                    currentStream.getTracks().forEach(track => track.stop());
                     currentStream = null;
                 }
 
-                // Reset video element
-                video.srcObject = null;
-                video.src = '';
-
-                // Cek dukungan kamera
-                if (!navigator.mediaDevices && !navigator.getUserMedia) {
-                    throw new Error('Browser tidak mendukung akses kamera');
-                }
-
-                console.log('Browser support check passed');
-                console.log('User Agent:', navigator.userAgent);
-
-                // Constraints yang lebih kompatibel
-                let constraints = {
+                const constraints = {
                     video: {
-                        facingMode: facingMode,
-                        width: { min: 320, ideal: 640, max: 1280 },
-                        height: { min: 240, ideal: 480, max: 720 }
+                        facingMode: facingMode
                     },
                     audio: false
                 };
 
-                console.log('Requesting camera with constraints:', constraints);
-                showMessage('Meminta izin kamera...', 'info');
-
-                // Coba dengan constraints lengkap terlebih dahulu
-                try {
-                    currentStream = await navigator.mediaDevices.getUserMedia(constraints);
-                } catch (detailedError) {
-                    console.warn('Detailed constraints failed, trying basic:', detailedError);
-                    
-                    // Fallback ke constraints dasar
-                    constraints = {
-                        video: true,
-                        audio: false
-                    };
-                    
-                    currentStream = await navigator.mediaDevices.getUserMedia(constraints);
-                }
-
-                if (!currentStream) {
-                    throw new Error('Tidak dapat memperoleh stream kamera');
-                }
-
-                console.log('Camera stream obtained:', currentStream);
-                console.log('Video tracks:', currentStream.getVideoTracks());
-
-                // Set srcObject dengan error handling
-                try {
-                    video.srcObject = currentStream;
-                } catch (srcError) {
-                    console.warn('srcObject not supported, using createObjectURL');
-                    // Fallback untuk browser lama
-                    if (window.URL && window.URL.createObjectURL) {
-                        video.src = window.URL.createObjectURL(currentStream);
-                    } else {
-                        throw new Error('Browser tidak mendukung video stream');
-                    }
-                }
-
-                // Set atribut video untuk kompatibilitas maksimal
-                video.setAttribute('playsinline', '');
-                video.setAttribute('autoplay', '');
-                video.setAttribute('muted', '');
-                video.muted = true;
-                video.playsInline = true;
-                video.autoplay = true;
-
-                // Wait for video to load dan play
-                await new Promise((resolve, reject) => {
-                    let resolved = false;
-                    
-                    const onSuccess = () => {
-                        if (!resolved) {
-                            resolved = true;
-                            console.log('Video ready and playing');
-                            resolve();
-                        }
-                    };
-
-                    const onError = (error) => {
-                        if (!resolved) {
-                            resolved = true;
-                            console.error('Video load/play error:', error);
-                            reject(error);
-                        }
-                    };
-
-                    // Multiple event listeners untuk memastikan kompatibilitas
-                    video.onloadedmetadata = () => {
-                        console.log('Video metadata loaded');
-                        video.play().then(onSuccess).catch(onError);
-                    };
-
-                    video.oncanplay = () => {
-                        console.log('Video can play');
-                        if (video.readyState >= 2) {
-                            video.play().then(onSuccess).catch(onError);
-                        }
-                    };
-
-                    video.onplaying = onSuccess;
-                    video.onerror = onError;
-                    video.onabort = onError;
-
-                    // Timeout fallback
-                    setTimeout(() => {
-                        if (!resolved) {
-                            console.log('Forcing video play after timeout');
-                            video.play().then(onSuccess).catch(onError);
-                        }
-                    }, 2000);
-
-                    // Trigger load jika belum dimulai
-                    if (video.readyState === 0) {
-                        video.load();
-                    }
-                });
+                currentStream = await navigator.mediaDevices.getUserMedia(constraints);
+                video.srcObject = currentStream;
 
                 // Update UI
                 document.getElementById('startCamera').style.display = 'none';
@@ -1361,46 +1310,19 @@
                 document.getElementById('photoPreview').style.display = 'none';
                 video.style.display = 'block';
                 
-                showMessage('Kamera berhasil diaktifkan! Siap mengambil foto.', 'success');
-                
-                // Log info stream untuk debugging
-                const videoTrack = currentStream.getVideoTracks()[0];
-                if (videoTrack) {
-                    console.log('Video track settings:', videoTrack.getSettings());
-                    console.log('Video track capabilities:', videoTrack.getCapabilities());
-                }
+                showMessage('Kamera berhasil diaktifkan!', 'success');
 
             } catch (error) {
                 console.error('Error accessing camera:', error);
                 
-                // Cleanup on error
-                if (currentStream) {
-                    currentStream.getTracks().forEach(track => track.stop());
-                    currentStream = null;
-                }
-                video.srcObject = null;
-                
                 let errorMessage = 'Gagal mengakses kamera. ';
                 
-                if (error.name === 'NotAllowedError' || error.name === 'PermissionDeniedError') {
-                    errorMessage += 'Izin kamera ditolak. Silakan:\n';
-                    errorMessage += '• Klik ikon kamera di address bar\n';
-                    errorMessage += '• Pilih "Allow" atau "Izinkan"\n';
-                    errorMessage += '• Refresh halaman dan coba lagi';
-                } else if (error.name === 'NotFoundError' || error.name === 'DevicesNotFoundError') {
-                    errorMessage += 'Kamera tidak ditemukan. Pastikan:\n';
-                    errorMessage += '• Kamera terpasang dengan benar\n';
-                    errorMessage += '• Tidak digunakan aplikasi lain\n';
-                    errorMessage += '• Driver kamera terinstall';
-                } else if (error.name === 'NotSupportedError' || error.name === 'NotReadableError') {
-                    errorMessage += 'Browser atau perangkat tidak mendukung kamera.\n';
-                    errorMessage += 'Coba gunakan browser Chrome, Firefox, atau Safari terbaru.';
-                } else if (error.name === 'OverconstrainedError') {
-                    errorMessage += 'Pengaturan kamera tidak kompatibel.\n';
-                    errorMessage += 'Coba dengan kamera yang berbeda.';
+                if (error.name === 'NotAllowedError') {
+                    errorMessage += 'Izin kamera ditolak. Silakan izinkan akses kamera dan coba lagi.';
+                } else if (error.name === 'NotFoundError') {
+                    errorMessage += 'Kamera tidak ditemukan.';
                 } else {
-                    errorMessage += `Error: ${error.message}\n`;
-                    errorMessage += 'Pastikan menggunakan HTTPS dan browser terbaru.';
+                    errorMessage += 'Pastikan browser mendukung kamera dan menggunakan HTTPS.';
                 }
                 
                 showMessage(errorMessage, 'danger');
@@ -1416,7 +1338,6 @@
         async function switchCamera() {
             try {
                 facingMode = facingMode === 'user' ? 'environment' : 'user';
-                showMessage(`Beralih ke kamera ${facingMode === 'user' ? 'depan' : 'belakang'}...`, 'info');
                 await startCamera();
             } catch (error) {
                 console.error('Error switching camera:', error);
@@ -1424,72 +1345,18 @@
             }
         }
 
-        // Fungsi untuk mengambil foto dengan error handling yang lebih baik
+        // Fungsi untuk mengambil foto
         function capturePhoto() {
             try {
-                console.log('Attempting to capture photo...');
-                console.log('Video dimensions:', video.videoWidth, 'x', video.videoHeight);
-                console.log('Video ready state:', video.readyState);
-                
-                // Validasi video ready
-                if (!video || video.readyState < 2) {
-                    throw new Error('Video belum siap untuk capture');
-                }
-
-                if (!video.videoWidth || !video.videoHeight || video.videoWidth === 0 || video.videoHeight === 0) {
-                    throw new Error('Dimensi video tidak valid');
-                }
-
-                // Pastikan canvas tersedia
-                if (!canvas) {
-                    throw new Error('Canvas element tidak ditemukan');
-                }
-
                 const context = canvas.getContext('2d');
-                if (!context) {
-                    throw new Error('Tidak dapat membuat context 2D');
-                }
-
-                // Set ukuran canvas sesuai video
                 canvas.width = video.videoWidth;
                 canvas.height = video.videoHeight;
                 
-                console.log('Canvas dimensions set to:', canvas.width, 'x', canvas.height);
-                
-                // Clear canvas terlebih dahulu
-                context.clearRect(0, 0, canvas.width, canvas.height);
-                
-                // Draw video frame ke canvas
                 context.drawImage(video, 0, 0, canvas.width, canvas.height);
-                
-                // Cek apakah gambar berhasil di-draw
-                const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
-                const hasContent = imageData.data.some(pixel => pixel !== 0);
-                
-                if (!hasContent) {
-                    throw new Error('Gagal menangkap gambar dari video');
-                }
-                
-                // Convert ke data URL dengan kualitas tinggi
                 capturedPhotoData = canvas.toDataURL('image/jpeg', 0.9);
                 
-                if (!capturedPhotoData || capturedPhotoData === 'data:,' || capturedPhotoData.length < 1000) {
-                    throw new Error('Data foto tidak valid atau kosong');
-                }
-                
-                console.log('Photo captured successfully, size:', capturedPhotoData.length, 'bytes');
-                
                 // Update UI
-                const capturedImg = document.getElementById('capturedPhoto');
-                capturedImg.src = capturedPhotoData;
-                capturedImg.onload = () => {
-                    console.log('Photo preview loaded successfully');
-                };
-                capturedImg.onerror = () => {
-                    console.error('Failed to load photo preview');
-                    showMessage('Gagal menampilkan preview foto!', 'warning');
-                };
-                
+                document.getElementById('capturedPhoto').src = capturedPhotoData;
                 document.getElementById('photoPreview').style.display = 'block';
                 video.style.display = 'none';
                 
@@ -1497,40 +1364,17 @@
                 document.getElementById('switchCamera').style.display = 'none';
                 document.getElementById('startCamera').style.display = 'inline-block';
                 
-                // Stop camera stream untuk menghemat resource
+                // Stop camera stream
                 if (currentStream) {
-                    currentStream.getTracks().forEach(track => {
-                        track.stop();
-                        console.log('Stopped camera track:', track.kind);
-                    });
+                    currentStream.getTracks().forEach(track => track.stop());
                     currentStream = null;
                 }
                 
-                showMessage('Foto berhasil diambil! Klik tombol download untuk menyimpan atau lanjutkan mengisi form.', 'success');
+                showMessage('Foto berhasil diambil!', 'success');
                 
             } catch (error) {
                 console.error('Error capturing photo:', error);
-                
-                let errorMessage = 'Gagal mengambil foto. ';
-                
-                if (error.message.includes('Video belum siap')) {
-                    errorMessage += 'Tunggu hingga kamera sepenuhnya aktif, lalu coba lagi.';
-                } else if (error.message.includes('Dimensi video tidak valid')) {
-                    errorMessage += 'Kamera belum menampilkan gambar. Coba restart kamera.';
-                } else if (error.message.includes('Canvas')) {
-                    errorMessage += 'Terjadi masalah teknis. Refresh halaman dan coba lagi.';
-                } else {
-                    errorMessage += 'Pastikan kamera berfungsi dengan baik dan coba lagi.';
-                }
-                
-                showMessage(errorMessage, 'danger');
-                
-                // Coba restart kamera jika capture gagal
-                setTimeout(() => {
-                    if (confirm('Apakah Anda ingin mencoba restart kamera?')) {
-                        startCamera();
-                    }
-                }, 2000);
+                showMessage('Gagal mengambil foto!', 'danger');
             }
         }
 
@@ -1604,10 +1448,8 @@
             }
         }
 
-        // Event listener untuk form submit
-        document.getElementById('memberForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
+        // Fungsi untuk submit form (digunakan oleh kedua tombol)
+        function submitForm() {
             // Validasi foto
             if (!capturedPhotoData) {
                 showMessage('Silakan ambil foto terlebih dahulu!', 'warning');
@@ -1666,6 +1508,18 @@
             
             console.log('Sending member data:', memberData);
             submitMember(memberData);
+        }
+
+        // Event listener untuk form submit
+        document.getElementById('memberForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            submitForm();
+        });
+
+        // Event listener untuk sticky submit button
+        document.getElementById('stickySubmitBtn').addEventListener('click', function(e) {
+            e.preventDefault();
+            submitForm();
         });
 
         // Fungsi untuk memuat daftar member
@@ -2016,158 +1870,28 @@
             });
         }
 
-        // Event listeners untuk edit camera dengan kompatibilitas penuh
+        // Event listeners untuk edit camera (versi original yang berfungsi)
         document.getElementById('editStartCamera').addEventListener('click', async function() {
             try {
-                // Jalankan polyfill untuk edit camera juga
-                getUserMediaPolyfill();
-
-                if (editCurrentStream) {
-                    editCurrentStream.getTracks().forEach(track => {
-                        track.stop();
-                        console.log('Stopped edit camera track:', track.kind);
-                    });
-                    editCurrentStream = null;
-                }
-
-                const editVideo = document.getElementById('editVideo');
-                editVideo.srcObject = null;
-                editVideo.src = '';
-
-                // Cek dukungan kamera
-                if (!navigator.mediaDevices && !navigator.getUserMedia) {
-                    throw new Error('Browser tidak mendukung akses kamera untuk edit');
-                }
-
-                console.log('Starting edit camera...');
-                showMessage('Meminta izin kamera untuk edit...', 'info');
-
-                // Constraints untuk edit camera
-                let constraints = {
-                    video: {
-                        facingMode: 'user',
-                        width: { min: 320, ideal: 640, max: 1280 },
-                        height: { min: 240, ideal: 480, max: 720 }
-                    },
-                    audio: false
-                };
-
-                // Coba dengan constraints lengkap terlebih dahulu
-                try {
-                    editCurrentStream = await navigator.mediaDevices.getUserMedia(constraints);
-                } catch (detailedError) {
-                    console.warn('Edit camera detailed constraints failed, trying basic:', detailedError);
-                    
-                    // Fallback ke constraints dasar
-                    constraints = {
-                        video: true,
-                        audio: false
-                    };
-                    
-                    editCurrentStream = await navigator.mediaDevices.getUserMedia(constraints);
-                }
-
-                if (!editCurrentStream) {
-                    throw new Error('Tidak dapat memperoleh stream kamera edit');
-                }
-
-                console.log('Edit camera stream obtained:', editCurrentStream);
-
-                // Set srcObject dengan error handling
-                try {
-                    editVideo.srcObject = editCurrentStream;
-                } catch (srcError) {
-                    console.warn('Edit video srcObject not supported, using createObjectURL');
-                    if (window.URL && window.URL.createObjectURL) {
-                        editVideo.src = window.URL.createObjectURL(editCurrentStream);
-                    } else {
-                        throw new Error('Browser tidak mendukung video stream untuk edit');
-                    }
-                }
-
-                // Set atribut video untuk kompatibilitas maksimal
-                editVideo.setAttribute('playsinline', '');
-                editVideo.setAttribute('autoplay', '');
-                editVideo.setAttribute('muted', '');
-                editVideo.muted = true;
-                editVideo.playsInline = true;
-                editVideo.autoplay = true;
-
-                // Wait for video to load dan play
-                await new Promise((resolve, reject) => {
-                    let resolved = false;
-                    
-                    const onSuccess = () => {
-                        if (!resolved) {
-                            resolved = true;
-                            console.log('Edit video ready and playing');
-                            resolve();
-                        }
-                    };
-
-                    const onError = (error) => {
-                        if (!resolved) {
-                            resolved = true;
-                            console.error('Edit video load/play error:', error);
-                            reject(error);
-                        }
-                    };
-
-                    editVideo.onloadedmetadata = () => {
-                        console.log('Edit video metadata loaded');
-                        editVideo.play().then(onSuccess).catch(onError);
-                    };
-
-                    editVideo.oncanplay = () => {
-                        console.log('Edit video can play');
-                        if (editVideo.readyState >= 2) {
-                            editVideo.play().then(onSuccess).catch(onError);
-                        }
-                    };
-
-                    editVideo.onplaying = onSuccess;
-                    editVideo.onerror = onError;
-                    editVideo.onabort = onError;
-
-                    // Timeout fallback
-                    setTimeout(() => {
-                        if (!resolved) {
-                            console.log('Forcing edit video play after timeout');
-                            editVideo.play().then(onSuccess).catch(onError);
-                        }
-                    }, 2000);
-
-                    // Trigger load jika belum dimulai
-                    if (editVideo.readyState === 0) {
-                        editVideo.load();
-                    }
-                });
-                
-                document.getElementById('editCameraContainer').style.display = 'block';
-                showMessage('Kamera edit berhasil diaktifkan! Siap mengambil foto baru.', 'success');
-
-            } catch (error) {
-                console.error('Error accessing edit camera:', error);
-                
-                // Cleanup on error
                 if (editCurrentStream) {
                     editCurrentStream.getTracks().forEach(track => track.stop());
                     editCurrentStream = null;
                 }
+
+                const constraints = {
+                    video: { facingMode: 'user' },
+                    audio: false
+                };
+
+                editCurrentStream = await navigator.mediaDevices.getUserMedia(constraints);
+                document.getElementById('editVideo').srcObject = editCurrentStream;
                 
-                let errorMessage = 'Gagal mengakses kamera untuk edit. ';
-                
-                if (error.name === 'NotAllowedError' || error.name === 'PermissionDeniedError') {
-                    errorMessage += 'Izin kamera ditolak untuk edit.';
-                } else if (error.name === 'NotFoundError' || error.name === 'DevicesNotFoundError') {
-                    errorMessage += 'Kamera tidak ditemukan untuk edit.';
-                } else if (error.name === 'NotSupportedError' || error.name === 'NotReadableError') {
-                    errorMessage += 'Browser tidak mendukung akses kamera untuk edit.';
-                } else {
-                    errorMessage += `Error: ${error.message}`;
-                }
-                
-                showMessage(errorMessage, 'danger');
+                document.getElementById('editCameraContainer').style.display = 'block';
+                showMessage('Kamera edit berhasil diaktifkan!', 'success');
+
+            } catch (error) {
+                console.error('Error accessing edit camera:', error);
+                showMessage('Gagal mengakses kamera untuk edit!', 'danger');
             }
         });
 
@@ -2175,106 +1899,29 @@
             try {
                 const editVideo = document.getElementById('editVideo');
                 const editCanvas = document.getElementById('editCanvas');
-                
-                console.log('Attempting to capture edit photo...');
-                console.log('Edit video dimensions:', editVideo.videoWidth, 'x', editVideo.videoHeight);
-                console.log('Edit video ready state:', editVideo.readyState);
-                
-                // Validasi video ready
-                if (!editVideo || editVideo.readyState < 2) {
-                    throw new Error('Video edit belum siap untuk capture');
-                }
-
-                if (!editVideo.videoWidth || !editVideo.videoHeight || editVideo.videoWidth === 0 || editVideo.videoHeight === 0) {
-                    throw new Error('Dimensi video edit tidak valid');
-                }
-
-                // Pastikan canvas tersedia
-                if (!editCanvas) {
-                    throw new Error('Canvas edit element tidak ditemukan');
-                }
-
                 const context = editCanvas.getContext('2d');
-                if (!context) {
-                    throw new Error('Tidak dapat membuat context 2D untuk edit');
-                }
-
-                // Set ukuran canvas sesuai video
+                
                 editCanvas.width = editVideo.videoWidth;
                 editCanvas.height = editVideo.videoHeight;
                 
-                console.log('Edit canvas dimensions set to:', editCanvas.width, 'x', editCanvas.height);
-                
-                // Clear canvas terlebih dahulu
-                context.clearRect(0, 0, editCanvas.width, editCanvas.height);
-                
-                // Draw video frame ke canvas
                 context.drawImage(editVideo, 0, 0, editCanvas.width, editCanvas.height);
-                
-                // Cek apakah gambar berhasil di-draw
-                const imageData = context.getImageData(0, 0, editCanvas.width, editCanvas.height);
-                const hasContent = imageData.data.some(pixel => pixel !== 0);
-                
-                if (!hasContent) {
-                    throw new Error('Gagal menangkap gambar dari video edit');
-                }
-                
-                // Convert ke data URL dengan kualitas tinggi
                 editCapturedPhotoData = editCanvas.toDataURL('image/jpeg', 0.9);
                 
-                if (!editCapturedPhotoData || editCapturedPhotoData === 'data:,' || editCapturedPhotoData.length < 1000) {
-                    throw new Error('Data foto edit tidak valid atau kosong');
-                }
-                
-                console.log('Edit photo captured successfully, size:', editCapturedPhotoData.length, 'bytes');
-                
                 // Update UI
-                const editMemberPhoto = document.getElementById('editMemberPhoto');
-                editMemberPhoto.src = editCapturedPhotoData;
-                editMemberPhoto.onload = () => {
-                    console.log('Edit photo preview loaded successfully');
-                };
-                editMemberPhoto.onerror = () => {
-                    console.error('Failed to load edit photo preview');
-                    showMessage('Gagal menampilkan preview foto edit!', 'warning');
-                };
-                
+                document.getElementById('editMemberPhoto').src = editCapturedPhotoData;
                 document.getElementById('editCameraContainer').style.display = 'none';
                 
-                // Stop camera stream untuk menghemat resource
+                // Stop camera stream
                 if (editCurrentStream) {
-                    editCurrentStream.getTracks().forEach(track => {
-                        track.stop();
-                        console.log('Stopped edit camera track:', track.kind);
-                    });
+                    editCurrentStream.getTracks().forEach(track => track.stop());
                     editCurrentStream = null;
                 }
                 
-                showMessage('Foto baru berhasil diambil untuk edit! Foto akan digunakan saat menyimpan perubahan.', 'success');
+                showMessage('Foto baru berhasil diambil!', 'success');
                 
             } catch (error) {
                 console.error('Error capturing edit photo:', error);
-                
-                let errorMessage = 'Gagal mengambil foto untuk edit. ';
-                
-                if (error.message.includes('Video edit belum siap')) {
-                    errorMessage += 'Tunggu hingga kamera edit sepenuhnya aktif, lalu coba lagi.';
-                } else if (error.message.includes('Dimensi video edit tidak valid')) {
-                    errorMessage += 'Kamera edit belum menampilkan gambar. Coba restart kamera edit.';
-                } else if (error.message.includes('Canvas edit')) {
-                    errorMessage += 'Terjadi masalah teknis pada edit. Tutup modal dan coba lagi.';
-                } else {
-                    errorMessage += 'Pastikan kamera edit berfungsi dengan baik dan coba lagi.';
-                }
-                
-                showMessage(errorMessage, 'danger');
-                
-                // Coba restart edit camera jika capture gagal
-                setTimeout(() => {
-                    if (confirm('Apakah Anda ingin mencoba restart kamera edit?')) {
-                        document.getElementById('editStartCamera').click();
-                    }
-                }, 2000);
+                showMessage('Gagal mengambil foto untuk edit!', 'danger');
             }
         });
 
@@ -2320,82 +1967,83 @@
         window.addEventListener('orientationchange', handleOrientationChange);
         window.addEventListener('resize', handleOrientationChange);
 
-        // Fungsi untuk deteksi browser dan debugging
-        function detectBrowserSupport() {
-            const userAgent = navigator.userAgent;
-            const isChrome = /Chrome/.test(userAgent) && /Google Inc/.test(navigator.vendor);
-            const isFirefox = /Firefox/.test(userAgent);
-            const isSafari = /Safari/.test(userAgent) && /Apple Computer/.test(navigator.vendor);
-            const isEdge = /Edg/.test(userAgent);
-            const isMobile = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent);
-            
-            console.log('Browser Detection:');
-            console.log('- User Agent:', userAgent);
-            console.log('- Chrome:', isChrome);
-            console.log('- Firefox:', isFirefox);
-            console.log('- Safari:', isSafari);
-            console.log('- Edge:', isEdge);
-            console.log('- Mobile:', isMobile);
-            console.log('- HTTPS:', location.protocol === 'https:');
-            
-            // Cek dukungan getUserMedia
-            const hasGetUserMedia = !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia);
-            const hasLegacyGetUserMedia = !!(navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia);
-            
-            console.log('Camera Support:');
-            console.log('- Modern getUserMedia:', hasGetUserMedia);
-            console.log('- Legacy getUserMedia:', hasLegacyGetUserMedia);
-            console.log('- MediaDevices:', !!navigator.mediaDevices);
-            
-            // Tampilkan peringatan jika tidak ada dukungan kamera
-            if (!hasGetUserMedia && !hasLegacyGetUserMedia) {
-                showMessage('Browser Anda tidak mendukung akses kamera. Silakan gunakan Chrome, Firefox, Safari, atau Edge terbaru.', 'warning');
-            } else if (location.protocol !== 'https:' && location.hostname !== 'localhost') {
-                showMessage('Untuk keamanan, akses kamera memerlukan HTTPS. Beberapa fitur mungkin tidak berfungsi.', 'warning');
+        // Fungsi sederhana untuk cek dukungan kamera
+        function checkCameraSupport() {
+            if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+                showMessage('Browser Anda tidak mendukung akses kamera. Silakan gunakan browser terbaru.', 'warning');
+                return false;
             }
-            
-            return {
-                isChrome,
-                isFirefox,
-                isSafari,
-                isEdge,
-                isMobile,
-                hasCamera: hasGetUserMedia || hasLegacyGetUserMedia,
-                isSecure: location.protocol === 'https:' || location.hostname === 'localhost'
-            };
+            return true;
         }
 
-        // Fungsi untuk menampilkan info debug
-        function showDebugInfo() {
-            const browserInfo = detectBrowserSupport();
-            console.log('=== HARINFOOD Camera Debug Info ===');
-            console.log('Browser Support:', browserInfo);
-            console.log('Screen Size:', window.innerWidth + 'x' + window.innerHeight);
-            console.log('Device Pixel Ratio:', window.devicePixelRatio);
-            console.log('Orientation:', window.innerWidth > window.innerHeight ? 'Landscape' : 'Portrait');
+        // Sticky Submit Button and Floating Registration Button Functionality
+        function initButtons() {
+            const stickyBtn = document.getElementById('stickySubmitBtn');
+            const floatingBtn = document.getElementById('floatingRegisterBtn');
+            const registerTab = document.getElementById('register-tab');
             
-            // Cek available cameras
-            if (navigator.mediaDevices && navigator.mediaDevices.enumerateDevices) {
-                navigator.mediaDevices.enumerateDevices()
-                    .then(devices => {
-                        const videoDevices = devices.filter(device => device.kind === 'videoinput');
-                        console.log('Available Cameras:', videoDevices.length);
-                        videoDevices.forEach((device, index) => {
-                            console.log(`Camera ${index + 1}:`, device.label || `Camera ${index + 1}`, device.deviceId);
-                        });
-                    })
-                    .catch(error => {
-                        console.log('Cannot enumerate devices:', error);
-                    });
+            // Click handler untuk floating button
+            floatingBtn.addEventListener('click', function() {
+                // Pindah ke tab register
+                const registerTabInstance = new bootstrap.Tab(registerTab);
+                registerTabInstance.show();
+                
+                // Scroll ke atas
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+            
+            // Show/hide buttons based on active tab
+            function toggleButtons() {
+                const activeTab = document.querySelector('.nav-link.active');
+                const isRegisterTab = activeTab && activeTab.id === 'register-tab';
+                
+                if (isRegisterTab) {
+                    stickyBtn.classList.add('show');
+                    floatingBtn.classList.add('hidden');
+                } else {
+                    stickyBtn.classList.remove('show');
+                    floatingBtn.classList.remove('hidden');
+                }
             }
+            
+            // Listen for tab changes
+            document.querySelectorAll('[data-bs-toggle="tab"]').forEach(tab => {
+                tab.addEventListener('shown.bs.tab', toggleButtons);
+            });
+            
+            // Initial check
+            toggleButtons();
+            
+            // Hide floating button when scrolling up on non-register tabs
+            let lastScrollTop = 0;
+            window.addEventListener('scroll', function() {
+                const activeTab = document.querySelector('.nav-link.active');
+                const isRegisterTab = activeTab && activeTab.id === 'register-tab';
+                
+                if (!isRegisterTab) {
+                    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                    
+                    if (scrollTop > lastScrollTop && scrollTop > 100) {
+                        // Scrolling down
+                        floatingBtn.style.transform = 'translateY(100px)';
+                        floatingBtn.style.opacity = '0';
+                    } else {
+                        // Scrolling up
+                        floatingBtn.style.transform = 'translateY(0)';
+                        floatingBtn.style.opacity = '1';
+                    }
+                    
+                    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+                }
+            });
         }
 
         // Load members saat halaman dimuat
         document.addEventListener('DOMContentLoaded', function() {
-            console.log('=== HARINFOOD Member Card System Loaded ===');
+            console.log('HARINFOOD Member Card System Loaded');
             
-            // Jalankan deteksi browser dan debug info
-            showDebugInfo();
+            // Cek dukungan kamera
+            checkCameraSupport();
             
             // Load data members
             loadMembers();
@@ -2403,15 +2051,8 @@
             // Set initial orientation
             handleOrientationChange();
             
-            // Tambahkan event listener untuk debugging (tekan Ctrl+Shift+D)
-            document.addEventListener('keydown', function(e) {
-                if (e.ctrlKey && e.shiftKey && e.key === 'D') {
-                    showDebugInfo();
-                    showMessage('Debug info ditampilkan di console browser (F12)', 'info');
-                }
-            });
-            
-            console.log('System ready! Press Ctrl+Shift+D for debug info.');
+            // Initialize buttons
+            initButtons();
         });
 
         // Event listener untuk tab change
@@ -2423,5 +2064,5 @@
             });
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9752a05ac4b1fd21',t:'MTc1NjIwMzkzOS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'975314ff12057983',t:'MTc1NjIwODcxNy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
